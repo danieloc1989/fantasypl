@@ -4,6 +4,7 @@
 <!-- badges: start -->
 [![Lifecycle: experimental](https://img.shields.io/badge/lifecycle-experimental-orange.svg)](https://lifecycle.r-lib.org/articles/stages.html#experimental)
 [![CRAN status](https://www.r-pkg.org/badges/version/fantasypl)](https://CRAN.R-project.org/package=fantasypl)
+[![Codecov test coverage](https://codecov.io/gh/danieloc1989/fantasypl/branch/master/graph/badge.svg)](https://app.codecov.io/gh/danieloc1989/fantasypl?branch=master)
 <!-- badges: end -->
 
 The goal of {fantasypl} is to retrieve data from the Fantasy Premier League API endpoints and provide it in a convenient tabular format (tibble).
