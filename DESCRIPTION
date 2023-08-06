@@ -1,0 +1,27 @@
+Package: fantasypl
+Title: Access the Fantasy Premier League API
+Version: 0.0.0.9000
+Authors@R: 
+    person("Daniel", "O'Callaghan", , "danieloc1989@gmail.com", role = c("aut", "cre"))
+Description: A package with functions designed to retrieve specific information from the Fantasy Premier League API and provide it in a convenient tabular format (tibble).
+License: MIT + file LICENSE
+Encoding: UTF-8
+Roxygen: list(markdown = TRUE)
+RoxygenNote: 7.2.3
+Imports: 
+    cli,
+    dplyr,
+    glue,
+    gt,
+    httr2,
+    jsonlite,
+    lubridate,
+    purrr,
+    rlang,
+    tibble
+Depends: 
+    R (>= 2.10)
+LazyData: true
+Suggests: 
+    testthat (>= 3.0.0)
+Config/testthat/edition: 3
