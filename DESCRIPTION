@@ -1,6 +1,6 @@
 Package: fantasypl
 Title: Access the Fantasy Premier League API
-Version: 0.0.0.9000
+Version: 0.0.0.9001
 Authors@R: 
     person("Daniel", "O'Callaghan", , "danieloc1989@gmail.com", role = c("aut", "cre"))
 Description: A package with functions designed to retrieve specific information from the Fantasy Premier League API and provide it in a convenient tabular format (tibble).
