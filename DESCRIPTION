@@ -13,6 +13,7 @@ Imports:
     dplyr,
     glue,
     gt,
+    gtExtras,
     httr2,
     jsonlite,
     lubridate,

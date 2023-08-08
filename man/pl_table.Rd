@@ -2,7 +2,7 @@
 % Please edit documentation in R/pl-table.R
 \name{pl_table}
 \alias{pl_table}
-\title{Create a Premier League table.}
+\title{Print Premier League Table.}
 \usage{
 pl_table()
 }
@@ -10,9 +10,8 @@ pl_table()
 A \code{gt} table object displaying the Premier League table.
 }
 \description{
-This function creates a table with Premier League teams' performance data, including
-the number of matches played, wins, draws, losses, points, and their current position
-in the league.
+This function prints a table with Premier League teams' performance data, including
+the number of matches played, wins, draws, losses and points.
 }
 \examples{
 pl_table()
