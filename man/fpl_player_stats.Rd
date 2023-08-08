@@ -2,7 +2,7 @@
 % Please edit documentation in R/player-info.R
 \name{fpl_player_stats}
 \alias{fpl_player_stats}
-\title{Get Fantasy Premier League player statistics.}
+\title{Get Fantasy Premier League Headline Statistics of All Players.}
 \usage{
 fpl_player_stats()
 }
@@ -21,7 +21,7 @@ A tibble containing player statistics with the following columns:
 }
 }
 \description{
-This function retrieves player statistics from the Fantasy Premier League API and
+This function retrieves all players' headline statistics from the Fantasy Premier League API and
 processes the data into a tibble with relevant player information and statistics.
 }
 \examples{

@@ -1,6 +1,6 @@
-#' Get Fantasy Premier League player information.
+#' Get Fantasy Premier League Information of All Players.
 #'
-#' This function retrieves information about FPL players, such as player IDs,
+#' This function retrieves information about all FPL players, such as player IDs,
 #' names, positions, and team details, using the Fantasy Premier League API.
 #'
 #' @return A tibble (`data.frame`) with the following columns:
@@ -38,9 +38,9 @@ fpl_player_info <- function() {
 
 }
 
-#' Get Fantasy Premier League player statistics.
+#' Get Fantasy Premier League Headline Statistics of All Players.
 #'
-#' This function retrieves player statistics from the Fantasy Premier League API and
+#' This function retrieves all players' headline statistics from the Fantasy Premier League API and
 #' processes the data into a tibble with relevant player information and statistics.
 #'
 #' @return A tibble containing player statistics with the following columns:
@@ -121,10 +121,10 @@ fpl_player_stats <- function() {
 }
 
 
-#' Get Fantasy Premier League player ICT index information.
+#' Get Fantasy Premier League ICT Index Information of All Players.
 #'
 #' This function retrieves information about the ICT (Influence, Creativity,
-#' Threat) index of FPL players using the Fantasy Premier League API.
+#' Threat) index of all FPL players using the Fantasy Premier League API.
 #'
 #' @return A tibble (`data.frame`) with the following columns:
 #'   \describe{

@@ -2,7 +2,7 @@
 % Please edit documentation in R/player-info.R
 \name{fpl_player_info}
 \alias{fpl_player_info}
-\title{Get Fantasy Premier League player information.}
+\title{Get Fantasy Premier League Information of All Players.}
 \usage{
 fpl_player_info()
 }
@@ -21,7 +21,7 @@ A tibble (\code{data.frame}) with the following columns:
 }
 }
 \description{
-This function retrieves information about FPL players, such as player IDs,
+This function retrieves information about all FPL players, such as player IDs,
 names, positions, and team details, using the Fantasy Premier League API.
 }
 \examples{

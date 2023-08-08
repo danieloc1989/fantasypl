@@ -2,7 +2,7 @@
 % Please edit documentation in R/player-info.R
 \name{fpl_player_ict}
 \alias{fpl_player_ict}
-\title{Get Fantasy Premier League player ICT index information.}
+\title{Get Fantasy Premier League ICT Index Information of All Players.}
 \usage{
 fpl_player_ict()
 }
@@ -27,7 +27,7 @@ A tibble (\code{data.frame}) with the following columns:
 }
 \description{
 This function retrieves information about the ICT (Influence, Creativity,
-Threat) index of FPL players using the Fantasy Premier League API.
+Threat) index of all FPL players using the Fantasy Premier League API.
 }
 \examples{
 fpl_player_ict()
