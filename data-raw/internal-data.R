@@ -48,14 +48,10 @@ player_positions <-
                 position_abb = singular_name_short)
 
 position_id_to_name <-
-  player_positions |>
-  dplyr::select(position_id, position_name) |>
-  tibble::deframe()
+  matcher(player_positions$position_id, player_positions$position_name)
 
 position_id_to_abb <-
-  player_positions |>
-  dplyr::select(position_id, position_abb) |>
-  tibble::deframe()
+  matcher(player_positions$position_id, player_positions$position_abb)
 
 
 usethis::use_data(team_season_id_to_name,

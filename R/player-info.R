@@ -34,7 +34,7 @@ fpl_player_info <- function() {
                   player_fpl_code = "code",
                   "special") |>
     purrr::modify_at("team", \(x) dplyr::case_match(x, !!!team_season_id_to_abb)) |>
-    purrr::modify_at("player_position", \(x) dplyr::recode(x, !!!position_id_to_abb))
+    purrr::modify_at("player_position", \(x) dplyr::case_match(x, !!!position_id_to_abb))
 
 }
 
