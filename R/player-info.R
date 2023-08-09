@@ -117,7 +117,8 @@ fpl_player_stats <- function() {
                   xg_conceded_per_90 = "expected_goals_conceded_per_90",
                   "in_dreamteam",
                   "dreamteam_count") |>
-    purrr::modify_at("selected_pct", \(x) as.double(x) / 100)
+    purrr::modify_at("selected_pct", \(x) as.double(x) / 100) |>
+    purrr::modify_at("current_price", \(x) x/10)
 }
 
 
