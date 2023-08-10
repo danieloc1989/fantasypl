@@ -1,0 +1,26 @@
+#' Club Directory Information
+#'
+#' Data taken from the Club Directory from the Premier League Season Handbook
+#'
+#' @format ## `club_directory`
+#' A data frame with 20 rows and 11 columns:
+#'   \describe{
+#'     \item{\code{abb}}{Abbreviation of the team.}
+#'     \item{\code{full_name}}{Full name of the team.}
+#'     \item{\code{stadium}}{Stadium name where the team plays.}
+#'     \item{\code{address}}{Address of the stadium.}
+#'     \item{\code{postcode}}{Postcode of the stadium location.}
+#'     \item{\code{capacity}}{Stadium capacity.}
+#'     \item{\code{pitch_width}}{Width of the pitch.}
+#'     \item{\code{pitch_length}}{Length of the pitch.}
+#'     \item{\code{kit}}{Kit manufacturer for the team.}
+#'     \item{\code{sponsor}}{Sponsor of the team.}
+#'     \item{\code{manager_coach}}{Name of the team's manager or coach.}
+#'   }
+#'
+#' @source Premier League Handbook Season 2023/24 <https://resources.premierleague.com/premierleague/document/2023/08/07/b7ce673f-fc5f-4bc3-911a-e6b32476c9dc/PL_Handbook_2023-24_DIGITAL_03.08.23.pdf>
+#'
+#' @examples
+#' club_directory
+#'
+"club_directory"
