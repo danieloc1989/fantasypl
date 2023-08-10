@@ -3,7 +3,7 @@
 \docType{data}
 \name{team_colours}
 \alias{team_colours}
-\title{Team Colours of the Premier League 23/24}
+\title{Colours of the Premier League 23/24}
 \format{
 \subsection{\code{team_colours}}{
 
@@ -22,6 +22,10 @@ Data are collected from 20 Premier League Teams style guides.
 team_colours
 }
 \description{
-Team Colours of the Premier League 23/24
+Colours of the Premier League 23/24
+}
+\examples{
+team_colours
+
 }
 \keyword{datasets}
