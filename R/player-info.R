@@ -169,3 +169,28 @@ fpl_player_ict <- function() {
                   "threat_rank_type") |>
     purrr::modify_at(c("ict_index", "influence", "creativity", "threat"), as.double)
 }
+
+
+fpl_player_detailed_stats <- function(player_id) {
+
+
+
+  call_api("element-summary", player_id = player_id)$history
+}
+
+
+fpl_player_find_id <- function(name, team = NULL) {
+
+
+
+  call_api("bootstrap-static")$elements |>
+    tibble::as_tibble() |>
+    dplyr::select(player_season_id = "id",
+                  player_name = "web_name",
+                  "first_name",
+                  "second_name",
+                  "team") |>
+    purrr::modify_at("team", \(x) dplyr::case_match(x, !!!team_season_id_to_abb))
+
+
+}
