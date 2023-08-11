@@ -45,10 +45,45 @@ fpl_fixtures_info <- function() {
 }
 
 
-
-
+#' Get Fixtures for Specific Premier League Teams
+#'
+#' This function retrieves fixture information for a specific Premier League teams.
+#'
+#' @param team A character vector of team abbreviations.
+#' @return A tibble (data frame) with fixture information including game details.
+#'
+#' @examples
+#' get_team_fixtures(c("ARS", "CHE"))
+#'
+#' @export
 get_team_fixtures <- function(team) {
 
+  team <- rlang::arg_match(team, values = team_abb, multiple = TRUE)
+
   fpl_fixtures_info() |>
+    dplyr::filter(!.data$finished) |>
+    dplyr::select(-c("team_h_score", "team_a_score", "stats", "started", "finished")) |>
+    dplyr::filter(.data$team_h %in% team | .data$team_a %in% team)
+}
+
+
+#' Get Results for Specific Premier League Teams
+#'
+#' This function retrieves result information for a specific Premier League teams.
+#'
+#' @param team A character vector of team abbreviations.
+#' @return A tibble (data frame) with result information including game details.
+#'
+#' @examples
+#' get_team_results(c("ARS", "CHE"))
+#'
+#' @export
+get_team_results <- function(team) {
+
+  team <- rlang::arg_match(team, values = team_abb, multiple = TRUE)
+
+  fpl_fixtures_info() |>
+    dplyr::filter(.data$finished) |>
+    dplyr::select(-c("kickoff_time_provisional", "started", "finished")) |>
     dplyr::filter(.data$team_h %in% team | .data$team_a %in% team)
 }

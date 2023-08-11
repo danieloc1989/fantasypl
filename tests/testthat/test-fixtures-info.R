@@ -27,3 +27,57 @@ test_that("fpl_fixtures_info returns a tibble with the correct columns and data 
   expect_type(result$finished, "logical")
   expect_type(result$fpl_game_code, "integer")
 })
+
+
+# ------------------------------------------------------------------------------
+
+test_that("get_team_fixtures returns a tibble with correct columns anddata types", {
+  # Call the function and get the result
+  result <- get_team_fixtures("ARS")
+
+  # Verify the output is a tibble
+  expect_type(result, "list")
+  expect_s3_class(result, "tbl_df")
+
+  expected_names <- c("gw_id", "game_id", "team_h", "team_a", "kickoff_time",
+                      "kickoff_time_provisional", "fpl_game_code")
+  expect_named(result, expected_names)
+
+  # Verify that the columns have the correct data types
+  expect_type(result$gw_id, "integer")
+  expect_type(result$game_id, "integer")
+  expect_type(result$team_h, "character")
+  expect_type(result$team_a, "character")
+  expect_type(result$kickoff_time, "double")
+  expect_s3_class(result$kickoff_time, "POSIXct")
+  expect_type(result$kickoff_time_provisional, "logical")
+  expect_type(result$fpl_game_code, "integer")
+})
+
+
+# ------------------------------------------------------------------------------
+
+test_that("get_team_results returns a tibble with correct columns and data types", {
+  # Call the function and get the result
+  result <- get_team_results("ARS")
+
+  # Verify the output is a tibble
+  expect_type(result, "list")
+  expect_s3_class(result, "tbl_df")
+
+  expected_names <- c("gw_id", "game_id", "team_h", "team_h_score", "team_a",
+                      "team_a_score", "stats", "kickoff_time", "fpl_game_code")
+  expect_named(result, expected_names)
+
+  # Verify that the columns have the correct data types
+  expect_type(result$gw_id, "integer")
+  expect_type(result$game_id, "integer")
+  expect_type(result$team_h, "character")
+  expect_type(result$team_h_score, "integer")
+  expect_type(result$team_a, "character")
+  expect_type(result$team_a_score, "integer")
+  expect_type(result$stats, "list")
+  expect_type(result$kickoff_time, "double")
+  expect_s3_class(result$kickoff_time, "POSIXct")
+  expect_type(result$fpl_game_code, "integer")
+})
