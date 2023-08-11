@@ -39,6 +39,8 @@ team_fpl_code_to_name <-
 team_fpl_code_to_abb <-
   matcher(team_ids$team_fpl_code, team_ids$team_abb)
 
+team_abb <- team_ids$team_abb
+
 # Player Positions -------------------------------------------------------------
 
 player_positions <-
@@ -58,6 +60,7 @@ usethis::use_data(team_season_id_to_name,
                   team_season_id_to_abb,
                   team_fpl_code_to_name,
                   team_fpl_code_to_abb,
+                  team_abb,
                   position_id_to_name,
                   position_id_to_abb,
                   overwrite = TRUE,
