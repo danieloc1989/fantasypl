@@ -20,6 +20,8 @@ pak::pak("danieloc1989/fantasypl")
 
 ## Retrieving FPL data
 
+**Notice** *The API is unavailable right after a gameweek deadline passes for about an hour, as the system updates selections. Calling a function during this time will return a 503 Error.*
+
 There are a number of functions that including:
 
 - team details - `fpl_team_info()`
