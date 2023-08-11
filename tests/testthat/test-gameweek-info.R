@@ -65,5 +65,5 @@ test_that("current_gw returns the correct current gameweek name", {
 
   # Verify that the result is a character vector (gameweek name)
   expect_type(result, "character")
-  #expect_match(result, "^Gameweek\\s\\d{1,2}")
+  expect_match(result, "^Gameweek\\s\\d{1,2}")
 })
