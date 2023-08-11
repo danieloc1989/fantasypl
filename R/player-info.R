@@ -118,7 +118,7 @@ fpl_player_stats <- function() {
                   "in_dreamteam",
                   "dreamteam_count") |>
     purrr::modify_at("selected_pct", \(x) as.double(x) / 100) |>
-    purrr::modify_at("current_price", \(x) x/10)
+    purrr::modify_at("current_price", \(x) x / 10)
 }
 
 
@@ -173,17 +173,63 @@ fpl_player_ict <- function() {
 
 fpl_player_detailed_stats <- function(player_id) {
 
+  if (length(player_id) != 1) {
+    cli::cli_abort("{.arg player_id} must be of length 1.")
+  }
 
+  player_id <- as.integer(player_id)
 
-  call_api("element-summary", player_id = player_id)$history
+  player_name <- dplyr::case_match(player_id, !!!the$players_recode)
+
+  message(paste0(player_name), "'s per game season statistics")
+
+  call_api("element-summary", player_id = player_id)$history |>
+    tibble::as_tibble() |>
+    dplyr::select(gameweek = "round",
+                  game_id =  "fixture",
+                  opponent = "opponent_team",
+                  "total_points",
+                  "starts",
+                  "minutes",
+                  "goals_scored",
+                  "assists",
+                  "clean_sheets",
+                  "goals_conceded",
+                  "own_goals",
+                  "penalties_saved",
+                  "penalties_missed",
+                  "yellow_cards",
+                  "red_cards",
+                  "saves",
+                  "bonus",
+                  "bps",
+                  "influence",
+                  "creativity",
+                  "threat",
+                  "ict_index",
+                  xg_scored = "expected_goals",
+                  xa = "expected_assists",
+                  xg_involvement = "expected_goal_involvements",
+                  xg_conceded = "expected_goals_conceded",
+                  price = "value",
+                  "selected",
+                  "transfers_in",
+                  "transfers_out",
+                  "transfers_balance") |>
+    purrr::modify_at("price", \(x) x / 10) |>
+    purrr::modify_at("opponent", \(x) dplyr::case_match(x, !!!team_season_id_to_abb))
+
 }
 
 
 fpl_player_find_id <- function(name, team = NULL) {
 
+  if (!is.null(team)) {
+    team <- rlang::arg_match(team, values = team)
+  }
 
-
-  call_api("bootstrap-static")$elements |>
+  data <-
+    call_api("bootstrap-static")$elements |>
     tibble::as_tibble() |>
     dplyr::select(player_season_id = "id",
                   player_name = "web_name",
