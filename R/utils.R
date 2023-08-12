@@ -56,6 +56,8 @@ call_api <- function(endpoint,
   if (endpoint == "dream-team") {
     if (is.null(gw_id)) {
       cli::cli_abort("{.arg gw_id} must be declared when {.arg endpoint} is '{endpoint}'")
+    } else if (gw_id < 1L || gw_id > 38L) {
+      cli::cli_abort("{.arg gw_id} must be between 1 and 38.")
     } else {
       append <- gw_id
     }
