@@ -66,10 +66,10 @@ fpl_gameweek_info <- function() {
 #' @return The next gameweek in character format.
 #'
 #' @examples
-#' next_gw()
+#' fpl_next_gw()
 #'
 #' @export
-next_gw <- function() {
+fpl_next_gw <- function() {
 
   call_api("bootstrap-static")$events |>
     dplyr::select("name", "is_next") |>
@@ -82,13 +82,13 @@ next_gw <- function() {
 #'
 #' This function retrieves the deadline time of the next gameweek in the Fantasy Premier League.
 #'
-#' @return The deadline time of the next gameweek in POSIXct format.
+#' @return The deadline time of the next gameweek's deadline in POSIXct format.
 #'
 #' @examples
-#' next_gw_deadline()
+#' fpl_next_gw_deadline()
 #'
 #' @export
-next_gw_deadline <- function() {
+fpl_next_gw_deadline <- function() {
 
   call_api("bootstrap-static")$events |>
     dplyr::select("deadline_time", "is_next") |>
@@ -102,13 +102,13 @@ next_gw_deadline <- function() {
 #'
 #' This function retrieves the current gameweek in the Fantasy Premier League.
 #'
-#' @return The current gameweek.
+#' @return The current FPL gameweek in character format.
 #'
 #' @examples
-#' current_gw()
+#' fpl_current_gw()
 #'
 #' @export
-current_gw <- function() {
+fpl_current_gw <- function() {
 
   call_api("bootstrap-static")$events |>
     dplyr::select("name", "is_current") |>

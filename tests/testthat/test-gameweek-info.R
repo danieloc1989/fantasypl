@@ -35,9 +35,9 @@ test_that("fpl_gameweek_info returns a tibble with the correct columns and data 
 
 # ------------------------------------------------------------------------------
 
-test_that("next_gw returns the correct gameweek name", {
+test_that("fpl_next_gw returns the correct gameweek name", {
   # Call the function and get the result
-  result <- next_gw()
+  result <- fpl_next_gw()
 
   # Verify that the result is a character vector (gameweek name)
   expect_type(result, "character")
@@ -47,9 +47,9 @@ test_that("next_gw returns the correct gameweek name", {
 
 # ------------------------------------------------------------------------------
 
-test_that("next_gw_deadline returns the correct deadline time", {
+test_that("fpl_next_gw_deadline returns the correct deadline time", {
   # Call the function and get the result
-  result <- next_gw_deadline()
+  result <- fpl_next_gw_deadline()
 
   # Verify that the result is a POSIXct object (deadline time)
   expect_type(result, "double")
@@ -59,9 +59,9 @@ test_that("next_gw_deadline returns the correct deadline time", {
 
 # ------------------------------------------------------------------------------
 
-test_that("current_gw returns the correct current gameweek name", {
+test_that("fpl_current_gw returns the correct current gameweek name", {
   # Call the function and get the result
-  result <- current_gw()
+  result <- fpl_current_gw()
 
   # Verify that the result is a character vector (gameweek name)
   expect_type(result, "character")
