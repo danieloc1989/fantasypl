@@ -56,7 +56,13 @@ fpl_gameweek_info <- function() {
                   player_most_transferred_in = "most_transferred_in",
                   top_player = "top_element",
                   top_player_info = "top_element_info") |>
-    purrr::modify_at("gw_deadline", \(x) lubridate::ymd_hms(x, tz = time_zone))
+    purrr::modify_at("gw_deadline", \(x) lubridate::ymd_hms(x, tz = time_zone)) |>
+    purrr::modify_at(c("player_most_selected", "player_most_captained",
+                       "player_most_vice_captained", "player_most_transferred_in",
+                       "top_player"), \(x) dplyr::case_match(x, !!!the$players_recode)) |>
+    tidyr::unnest(cols = "top_player_info") |>
+    dplyr::select(-"id") |>
+    dplyr::rename(top_player_points = "points")
 }
 
 #' Get the Next Fantasy Premier League Gameweek
