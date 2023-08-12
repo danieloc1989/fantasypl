@@ -5,8 +5,6 @@
 #'
 #' @return A `gt` table object displaying the Premier League table.
 #'
-#' @importFrom rlang .data
-#'
 #' @examples
 #' pl_table()
 #'

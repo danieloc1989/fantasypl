@@ -65,8 +65,6 @@ fpl_gameweek_info <- function() {
 #'
 #' @return The next gameweek in character format.
 #'
-#' @importFrom rlang .data
-#'
 #' @examples
 #' next_gw()
 #'
@@ -85,8 +83,6 @@ next_gw <- function() {
 #' This function retrieves the deadline time of the next gameweek in the Fantasy Premier League.
 #'
 #' @return The deadline time of the next gameweek in POSIXct format.
-#'
-#' @importFrom rlang .data
 #'
 #' @examples
 #' next_gw_deadline()
@@ -107,8 +103,6 @@ next_gw_deadline <- function() {
 #' This function retrieves the current gameweek in the Fantasy Premier League.
 #'
 #' @return The current gameweek.
-#'
-#' @importFrom rlang .data
 #'
 #' @examples
 #' current_gw()
