@@ -1,0 +1,66 @@
+---
+title: "Introduction to {fantasypl}"
+output: rmarkdown::html_vignette
+vignette: >
+  %\VignetteIndexEntry{Introduction to {fantasypl}}
+  %\VignetteEngine{knitr::rmarkdown}
+  %\VignetteEncoding{UTF-8}
+---
+
+```{r options, include = FALSE}
+knitr::opts_chunk$set(
+  collapse = TRUE,
+  comment = "#>"
+)
+```
+
+The {fantasypl} package is an R package that provides a convenient way to interact with the Fantasy Premier League API endpoints. It leverages the {httr2} package for making HTTP requests and integrates seamlessly with tidyverse packages for data manipulation and analysis.
+
+## Installation
+
+You can install the development version of the {fantasypl} package using the {pak} package:
+
+```{r install, eval=FALSE}
+# install.packages("pak")
+pak::pak("danieloc1989/fantasypl")
+```
+
+As of this time, there is no intention of releasing the {fantasypl} package on CRAN.
+
+## Overview
+
+The package offers functions to retrieve various types of information from the Fantasy Premier League API, such as team data, player statistics, fixtures, and more.
+
+```{r setup}
+library(fantasypl)
+```
+
+## Data Formatting
+
+The data retrieved from the API endpoints are often not in a convenient tabular format. For instance, the 'bootstrap-static' endpoint returns a list with a mix of dataframes, lists, and other objects:
+
+```{r}
+# First level structure of the bootstrap-static endpoint output
+call_api("bootstrap-static") |> 
+  str(max.level = 1)
+```
+
+To improve the usability of the data, the {fantasypl} package reformats and organizes the data into logical tabular structures.
+
+## Example: Team Data
+
+One example is the team data obtained from the 'teams' dataframe in the 'bootstrap-static' endpoint. By default, the ordering of the columns in the raw data might not make sense:
+
+```{r}
+# Original ordering of columns in teams dataframe
+call_api("bootstrap-static")$teams |> 
+  str()
+```
+
+The {fantasypl} package renames some of the columns and reorganizes the data for better readability:
+
+```{r}
+# Improved namimng and ordering of columns in teams dataframe
+fpl_team_info() |> 
+  str()
+```
