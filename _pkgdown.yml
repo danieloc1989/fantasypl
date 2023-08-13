@@ -2,3 +2,49 @@ url: https://danieloc1989.github.io/fantasypl/
 template:
   bootstrap: 5
 
+reference:
+- title: Functions to Retrieve Fantasy Premier League Data
+
+- subtitle: Teams
+  desc: >
+    Functions to retrieve information about FPL teams such as fixtures and results.
+  contents:
+  - fpl_team_info
+  - get_team_fixtures
+  - get_team_results
+
+- subtitle: Players
+  desc: >
+    Functions to retrieve information about the football players in FPL including match statistics and FPL scoring.
+  contents:
+  - fpl_player_info
+  - fpl_player_stats
+  - fpl_player_ict
+
+- subtitle: Gameweek
+  desc: >
+    Functions to retrieve information about FPL gameweeks.
+  contents:
+  - fpl_gameweek_info
+  - fpl_current_gw
+  - fpl_next_gw
+  - fpl_next_gw_deadline
+
+- subtitle: Dream Team
+  desc: >
+    Functions to retrieve information about FPL dream team.
+  contents:
+  - fpl_dreamteam
+
+- subtitle: Tables and Plots
+  desc: >
+    Functions to produce tables and plots.
+  contents:
+  - pl_table
+
+- subtitle: Datasets
+  desc: >
+    Datasets of various information about the Premier League.
+  contents:
+  - club_directory
+  - team_colours
