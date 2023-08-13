@@ -14,7 +14,7 @@ knitr::opts_chunk$set(
 )
 ```
 
-The {fantasypl} package is an R package that provides a convenient way to interact with the Fantasy Premier League API endpoints. It leverages the {httr2} package for making HTTP requests and integrates seamlessly with tidyverse packages for data manipulation and analysis.
+The {fantasypl} package is an R package that provides a convenient way to interact with the Fantasy Premier League API endpoints. It leverages the [{httr2}](https://httr2.r-lib.org/) package for making HTTP requests and integrates seamlessly with tidyverse packages for data manipulation and analysis.
 
 ## Installation
 
@@ -25,11 +25,11 @@ You can install the development version of the {fantasypl} package using the {pa
 pak::pak("danieloc1989/fantasypl")
 ```
 
-As of this time, there is no intention of releasing the {fantasypl} package on CRAN.
+As of this time, there is no intention of releasing the package on CRAN.
 
 ## Overview
 
-The package offers functions to retrieve various types of information from the Fantasy Premier League API, such as team data, player statistics, fixtures, and more.
+The package offers functions to retrieve various types of information from the Fantasy Premier League API endpoints, such as team data, player statistics, fixtures, and more.
 
 ```{r setup}
 library(fantasypl)
@@ -37,26 +37,29 @@ library(fantasypl)
 
 ## Data Formatting
 
-The data retrieved from the API endpoints are often not in a convenient tabular format. For instance, the 'bootstrap-static' endpoint returns a list with a mix of dataframes, lists, and other objects:
+The data retrieved from the API endpoints are often not in a convenient tabular format. For instance, the 'bootstrap-static' endpoint (general information in FPL) returns a list with a mix of dataframes, lists, and other objects:
 
 ```{r}
-# First level structure of the bootstrap-static endpoint output
+# API URL
 fpl_url <- "https://fantasy.premierleague.com/api"
- general_info <-
+ 
+# Retrieving bootstrap-static endpoint data
+general_info <-
   httr2::request(fpl_url) |> 
   httr2::req_url_path_append("bootstrap-static") |> 
   httr2::req_perform() |> 
   httr2::resp_body_string() |> 
   jsonlite::fromJSON()
- 
-  str(general_info, max.level = 1)
+
+# First level structure of the bootstrap-static endpoint output
+str(general_info, max.level = 1)
 ```
 
-To improve the usability of the data, the {fantasypl} package reformats and organizes the data into logical tabular structures.
+To improve the usability of the data, the {fantasypl} package reformats and organises the data into logical tabular structures.
 
-## Example: Team Data
+### Example: Team Data
 
-One example is the team data obtained from the 'teams' dataframe in the 'bootstrap-static' endpoint. By default, the ordering of the columns in the raw data might not make sense:
+One example is the team data obtained from the 'teams' dataframe in the 'bootstrap-static' endpoint. By default, the ordering of the columns in the raw data does not make sense:
 
 ```{r}
 # Original ordering of columns in teams dataframe
@@ -64,10 +67,10 @@ general_info$teams |>
   str()
 ```
 
-The {fantasypl} package renames some of the columns and reorganizes the data for better readability:
+The {fantasypl} package renames some of the columns and reorganises the data for better readability:
 
 ```{r}
-# Improved namimng and ordering of columns in teams dataframe
+# Improved naming and ordering of columns in teams dataframe
 fpl_team_info() |> 
   str()
 ```
