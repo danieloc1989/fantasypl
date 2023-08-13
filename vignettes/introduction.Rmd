@@ -41,8 +41,15 @@ The data retrieved from the API endpoints are often not in a convenient tabular 
 
 ```{r}
 # First level structure of the bootstrap-static endpoint output
-call_api("bootstrap-static") |> 
-  str(max.level = 1)
+fpl_url <- "https://fantasy.premierleague.com/api"
+ general_info <-
+  httr2::request(fpl_url) |> 
+  httr2::req_url_path_append("bootstrap-static") |> 
+  httr2::req_perform() |> 
+  httr2::resp_body_string() |> 
+  jsonlite::fromJSON()
+ 
+  str(general_info, max.level = 1)
 ```
 
 To improve the usability of the data, the {fantasypl} package reformats and organizes the data into logical tabular structures.
@@ -53,7 +60,7 @@ One example is the team data obtained from the 'teams' dataframe in the 'bootstr
 
 ```{r}
 # Original ordering of columns in teams dataframe
-call_api("bootstrap-static")$teams |> 
+general_info$teams |> 
   str()
 ```
 
