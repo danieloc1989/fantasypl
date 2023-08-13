@@ -21,6 +21,12 @@ reference:
   - fpl_player_stats
   - fpl_player_ict
 
+- subtitle: Fixtures
+  desc: >
+    Functions to retrieve infotmation about fixtures/matches in FPL.
+  contents:
+  - fpl_fixtures_info
+
 - subtitle: Gameweek
   desc: >
     Functions to retrieve information about FPL gameweeks.
