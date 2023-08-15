@@ -42,6 +42,12 @@ reference:
   contents:
   - fpl_dreamteam
 
+- subtitle: Leagues
+  desc: >
+    Functions to retrieve information about FPL leagues.
+  contents:
+  - fpl_league_info
+
 - subtitle: Tables and Plots
   desc: >
     Functions to produce tables and plots.
