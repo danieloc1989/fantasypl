@@ -26,7 +26,7 @@ call_api <- function(endpoint,
   # element-summary
   if (endpoint == "element-summary") {
     if (is.null(player_id)) {
-      cli::cli_abort("{.arg player_id} must be declared when {.arg endpoint} is '{endpoint}'")
+      cli::cli_abort("{.arg player_id} must be declared when {.arg endpoint} is '{endpoint}'.")
     } else {
         append <- player_id
       }
@@ -35,18 +35,20 @@ call_api <- function(endpoint,
   # entry (manager)
   if (endpoint == "entry") {
     if (is.null(manager_id)) {
-      cli::cli_abort("{.arg entry_id} must be declared when {.arg endpoint} is '{endpoint}'")
-    } else if (!manager_history) {
-      append <- manager_id
-    } else {
+      cli::cli_abort("{.arg entry_id} must be declared when {.arg endpoint} is '{endpoint}'.")
+    } else if (manager_history) {
       append <- glue::glue("{manager_id}/history")
+    } else if (!is.null(gw_id)) {
+      append <- glue::glue("{manager_id}/event/{gw_id}/picks")
+    } else {
+      append <- manager_id
     }
   }
 
   # leagues-classics
   if (endpoint == "leagues-classic") {
     if (is.null(league_id)) {
-      cli::cli_abort("{.arg league_id} must be declared when {.arg endpoint} is '{endpoint}'")
+      cli::cli_abort("{.arg league_id} must be declared when {.arg endpoint} is '{endpoint}'.")
     } else {
       append <- glue::glue("{league_id}/standings")
     }
@@ -55,7 +57,7 @@ call_api <- function(endpoint,
   # dream-team
   if (endpoint == "dream-team") {
     if (is.null(gw_id)) {
-      cli::cli_abort("{.arg gw_id} must be declared when {.arg endpoint} is '{endpoint}'")
+      cli::cli_abort("{.arg gw_id} must be declared when {.arg endpoint} is '{endpoint}'.")
     } else if (gw_id < 1L || gw_id > 38L) {
       cli::cli_abort("{.arg gw_id} must be between 1 and 38.")
     } else {
