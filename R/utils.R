@@ -70,3 +70,51 @@ call_api <- function(endpoint,
     httr2::resp_body_string() |>
     jsonlite::fromJSON()
 }
+
+
+#' Checks if ids provided satisfies whole number
+#'
+#' @noRd
+check_id <- function(x,
+                     arg = rlang::caller_arg(x),
+                     call = rlang::caller_env()) {
+
+  if (length(x) != 1) {
+    cli::cli_abort("{.arg {arg}} must be of length 1.", call = call)
+  }
+
+  if (!is.numeric(x)) {
+    cli::cli_abort("{.arg {arg}} must a numeric.", call = call)
+  }
+
+  if ((x %% 1) != 0) {
+    cli::cli_abort("{.arg {arg}} must a whole number.", call = call)
+  }
+
+  invisible(x)
+}
+
+
+#' Pulls the current gameweek id
+#'
+#' @noRd
+current_gw <- function() {
+  gw_data <- call_api("bootstrap-static")$events
+  gw_data$id[gw_data$is_current == TRUE]
+}
+
+
+#' Determines if gameweek is completed
+#'
+#' @noRd
+gw_finished <- function(gw_id) {
+
+  gw_id <- check_id(gw_id)
+
+  if (gw_id < 1 || gw_id > 38) {
+    cli::cli_abort("{.arg gw_id} must be between 1 and 38.")
+  }
+
+  gw_data <- call_api("bootstrap-static")$events
+  gw_data$finished[gw_data$id == gw_id]
+}
