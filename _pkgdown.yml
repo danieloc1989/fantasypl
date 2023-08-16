@@ -21,6 +21,14 @@ reference:
   - fpl_player_stats
   - fpl_player_ict
 
+- subtitle: Manager
+  desc: >
+    Functiond to retrieve information about the FPL managers.
+  contents:
+  - fpl_manager_info
+  - fpl_manager_picks
+  - fpl_manager_history
+
 - subtitle: Fixtures
   desc: >
     Functions to retrieve infotmation about fixtures/matches in FPL.
@@ -53,6 +61,12 @@ reference:
     Functions to produce tables and plots.
   contents:
   - pl_table
+
+- subtitle: Other
+  desc: >
+    Other handy functions.
+  contents:
+  - fpl_total_managers
 
 - subtitle: Datasets
   desc: >
