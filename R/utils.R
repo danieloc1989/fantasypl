@@ -97,6 +97,37 @@ check_id <- function(x,
 }
 
 
+check_manager <- function(x,
+                          arg = rlang::caller_arg(x),
+                          call = rlang::caller_env()) {
+
+  x <- check_id(x)
+
+  total_managers <- fpl_total_managers()
+
+  if (x < 1 || x > total_managers) {
+    cli::cli_abort("{.arg {arg}} must be between 1 and {total_managers}.", call = call)
+  }
+
+  invisible(x)
+}
+
+check_gameweek <- function(x,
+                           arg = rlang::caller_arg(x),
+                           call = rlang::caller_env()) {
+
+  x <- check_id(x)
+
+  current <- current_gw()
+
+  if(x < 1 || x > current) {
+    cli::cli_abort("{.arg {arg}} must be between 1 and {current}.", call = call)
+  }
+
+  invisible(x)
+}
+
+
 #' Pulls the current gameweek id
 #'
 #' @noRd
