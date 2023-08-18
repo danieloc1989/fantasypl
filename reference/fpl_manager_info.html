@@ -109,10 +109,11 @@ points, rank, transfers, and other relevant statistics.</p>
     <div class="section level2">
     <h2 id="ref-examples">Examples<a class="anchor" aria-label="anchor" href="#ref-examples"></a></h2>
     <div class="sourceCode"><pre class="sourceCode r"><code><span class="r-in"><span><span class="fu">fpl_manager_info</span><span class="op">(</span><span class="fl">123456</span><span class="op">)</span></span></span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> <span style="color: #949494;"># A tibble: 1 × 10</span></span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> <span style="color: #949494;"># A tibble: 2 × 10</span></span>
 <span class="r-out co"><span class="r-pr">#&gt;</span>   gameweek_id gw_points points_on_bench total_points gw_rank overall_rank value</span>
 <span class="r-out co"><span class="r-pr">#&gt;</span>         <span style="color: #949494; font-style: italic;">&lt;int&gt;</span>     <span style="color: #949494; font-style: italic;">&lt;int&gt;</span>           <span style="color: #949494; font-style: italic;">&lt;int&gt;</span>        <span style="color: #949494; font-style: italic;">&lt;int&gt;</span>   <span style="color: #949494; font-style: italic;">&lt;int&gt;</span>        <span style="color: #949494; font-style: italic;">&lt;int&gt;</span> <span style="color: #949494; font-style: italic;">&lt;dbl&gt;</span></span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> <span style="color: #BCBCBC;">1</span>           1        75              10           75 1<span style="text-decoration: underline;">648</span>468      1<span style="text-decoration: underline;">648</span>468   100</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> <span style="color: #BCBCBC;">1</span>           1        75              10           75 1<span style="text-decoration: underline;">648</span>468      1<span style="text-decoration: underline;">648</span>468  100 </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> <span style="color: #BCBCBC;">2</span>           2         0               0           75      <span style="color: #BB0000;">NA</span>      1<span style="text-decoration: underline;">648</span>468  100.</span>
 <span class="r-out co"><span class="r-pr">#&gt;</span> <span style="color: #949494;"># ℹ 3 more variables: bank &lt;dbl&gt;, gw_transfers &lt;int&gt;, gw_transfers_cost &lt;int&gt;</span></span>
 <span class="r-in"><span></span></span>
 </code></pre></div>
