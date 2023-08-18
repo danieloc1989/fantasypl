@@ -65,8 +65,6 @@ fpl_manager_info <- function(manager_id) {
 #' @examples
 #' fpl_manager_picks(123456)
 #'
-#' @importFrom cli cli_alert
-#'
 #' @export
 fpl_manager_picks <- function(manager_id, gw_id = current_gw()) {
 
