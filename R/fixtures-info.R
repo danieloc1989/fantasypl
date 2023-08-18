@@ -39,8 +39,8 @@ fpl_fixtures_info <- function() {
                   "finished",
                   fpl_game_code = "code") |>
     purrr::modify_at("kickoff_time", \(x) lubridate::ymd_hms(x, tz = "UTC")) |>
-    purrr::modify_at("team_h", \(x) dplyr::case_match(x, !!!team_season_id_to_abb)) |>
-    purrr::modify_at("team_a", \(x) dplyr::case_match(x, !!!team_season_id_to_abb)) |>
+    purrr::modify_at("team_h", \(x) dplyr::case_match(x, !!!the$teams_recode)) |>
+    purrr::modify_at("team_a", \(x) dplyr::case_match(x, !!!the$teams_recode)) |>
     dplyr::arrange(.data$game_id)
 }
 

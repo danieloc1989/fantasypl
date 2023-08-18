@@ -33,7 +33,7 @@ fpl_player_info <- function() {
                   player_position = "element_type",
                   player_fpl_code = "code",
                   "special") |>
-    purrr::modify_at("team", \(x) dplyr::case_match(x, !!!team_season_id_to_abb)) |>
+    purrr::modify_at("team", \(x) dplyr::case_match(x, !!!the$teams_recode)) |>
     purrr::modify_at("player_position", \(x) dplyr::case_match(x, !!!position_id_to_abb))
 
 }
@@ -217,7 +217,7 @@ fpl_player_detailed_stats <- function(player_id) {
                   "transfers_out",
                   "transfers_balance") |>
     purrr::modify_at("price", \(x) x / 10) |>
-    purrr::modify_at("opponent", \(x) dplyr::case_match(x, !!!team_season_id_to_abb))
+    purrr::modify_at("opponent", \(x) dplyr::case_match(x, !!!the$teams_recode))
 
 }
 
@@ -236,7 +236,7 @@ fpl_player_find_id <- function(name, team = NULL) {
                   "first_name",
                   "second_name",
                   "team") |>
-    purrr::modify_at("team", \(x) dplyr::case_match(x, !!!team_season_id_to_abb))
+    purrr::modify_at("team", \(x) dplyr::case_match(x, !!!the$teams_recode))
 
 
 }

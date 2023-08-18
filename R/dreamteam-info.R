@@ -64,6 +64,6 @@ fpl_dreamteam <- function(gameweek_id = NULL) {
     dplyr::rename(player = "element") |>
     dplyr::left_join(player_details, by = dplyr::join_by("player" == "player")) |>
     purrr::modify_at("player", \(x) dplyr::case_match(x, !!!the$players_recode)) |>
-    purrr::modify_at("team", \(x) dplyr::case_match(x, !!!team_season_id_to_abb)) |>
+    purrr::modify_at("team", \(x) dplyr::case_match(x, !!!the$teams_recode)) |>
     purrr::modify_at("position", \(x) dplyr::case_match(x, !!!position_id_to_abb))
 }
