@@ -26,30 +26,9 @@
 #' @export
 fpl_dreamteam <- function(gameweek_id = NULL) {
 
-  if (is.null(gameweek_id)) {
+  gameweek_id <- gameweek_id %||% current_gw()
+  gameweek_id <- check_gameweek(gameweek_id)
 
-    gameweek_id <-
-      call_api("bootstrap-static")$events |>
-      dplyr::filter(.data$is_current) |>
-      dplyr::pull("id")
-
-  } else {
-
-    gameweek_id <- as.integer(gameweek_id)
-
-    if (gameweek_id < 1L || gameweek_id > 38L) {
-      cli::cli_abort("{.arg gameweek_id} must be between 1 and 38.")
-    }
-
-    finished <-
-      call_api("bootstrap-static")$events |>
-      dplyr::filter(.data$id == gameweek_id) |>
-      dplyr::pull("finished")
-
-    if (!finished) {
-      cli::cli_abort("The {.arg gameweek_id} provided has not yet finished.")
-    }
-  }
 
   player_details <-
     call_api("bootstrap-static")$elements |>
