@@ -118,7 +118,7 @@ fpl_player_stats <- function() {
                   "in_dreamteam",
                   "dreamteam_count") |>
     purrr::modify_at("selected_pct", \(x) as.double(x) / 100) |>
-    purrr::modify_at("current_price", \(x) x / 10)
+    purrr::modify_at(c("current_price", "cost_change_start", "cost_change_start_fall", "cost_change_event", "cost_change_event_fall"), \(x) x / 10)
 }
 
 
@@ -173,11 +173,7 @@ fpl_player_ict <- function() {
 
 fpl_player_detailed_stats <- function(player_id) {
 
-  if (length(player_id) != 1) {
-    cli::cli_abort("{.arg player_id} must be of length 1.")
-  }
-
-  player_id <- as.integer(player_id)
+  player_id <- check_id(player_id)
 
   player_name <- dplyr::case_match(player_id, !!!the$players_recode)
 
@@ -221,12 +217,32 @@ fpl_player_detailed_stats <- function(player_id) {
 
 }
 
+#' Find Fantasy Premier League player IDs.
+#'
+#' This function searches for player IDs in the Fantasy Premier League based on their names and optionally their teams. A fuzzy match is implemnted.
+#'
+#' @param name The name of the player to search for.
+#' @param team (Optional) The team or teams to filter the search by. Defaults to all teams.
+#'
+#' @return The player IDs matching the search criteria. If no match is found, returns NA_integer_.
+#'
+#' @examples
+#' fpl_find_player_id("Salah", team = "LIV")
+#' fpl_find_player_id("Rashford")
+#'
+#' @export
+fpl_find_player_id <- function(name, team = NULL) {
 
-fpl_player_find_id <- function(name, team = NULL) {
+  team_var <- team %||% the$teams_abb
+  team_var <- rlang::arg_match(team_var, values = the$teams_abb, multiple = TRUE)
 
-  if (!is.null(team)) {
-    team <- rlang::arg_match(team, values = team)
+  if (length(name) != 1) {
+    cli::cli_abort("{.arg name} must be of length 1.")
   }
+  if (!is.character(name)) {
+    cli::cli_abort("{.arg team} must be a character.")
+  }
+
 
   data <-
     call_api("bootstrap-static")$elements |>
@@ -236,7 +252,28 @@ fpl_player_find_id <- function(name, team = NULL) {
                   "first_name",
                   "second_name",
                   "team") |>
-    purrr::modify_at("team", \(x) dplyr::case_match(x, !!!the$teams_recode))
+    purrr::modify_at("team", \(x) dplyr::case_match(x, !!!the$teams_recode)) |>
+    dplyr::filter(.data$team %in% team_var) |>
+    dplyr::filter(agrepl(name, .data$player_name, ignore.case = TRUE) |
+                  agrepl(name, .data$first_name, ignore.case = TRUE) |
+                  agrepl(name, .data$second_name, ignore.case = TRUE))
 
+  if (length(data$player_season_id) == 0) {
+    cli::cli_alert_warning("No player was found with the search criteria. Please redefine your search.")
+    return(NA_integer_)
+  }
 
+  if (length(data$player_season_id) == 1) {
+    cli::cli_alert_success("{.strong {data$player_name}} ({data$first_name} {data$second_name}) for {data$team} matched your search.")
+    return(data$player_season_id)
+  }
+
+  if (length(data$player_season_id) >= 2) {
+    cli::cli_alert_info("{.strong {length(data$player_season_id)}} players were found matching the criteria. These are as follows:")
+    data |>
+      dplyr::mutate(line = glue::glue("{player_name} ({first_name} {second_name}) - {team} --> {player_season_id}")) |>
+      _$line |>
+      cli::cli_li()
+    return(NA_integer_)
+  }
 }

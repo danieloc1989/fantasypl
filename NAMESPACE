@@ -2,6 +2,7 @@
 
 export(fpl_current_gw)
 export(fpl_dreamteam)
+export(fpl_find_player_id)
 export(fpl_fixtures_info)
 export(fpl_gameweek_info)
 export(fpl_league_info)

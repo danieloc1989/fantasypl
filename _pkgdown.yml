@@ -20,6 +20,7 @@ reference:
   - fpl_player_info
   - fpl_player_stats
   - fpl_player_ict
+  - fpl_find_player_id
 
 - subtitle: Fixtures
   desc: >
