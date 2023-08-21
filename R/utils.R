@@ -74,7 +74,7 @@ call_api <- function(endpoint,
 }
 
 
-#' Checks if ids provided satisfies whole number
+#' Validates ID variable
 #'
 #' @noRd
 check_id <- function(x,
@@ -96,7 +96,9 @@ check_id <- function(x,
   invisible(x)
 }
 
-
+#' Validate manager ID
+#'
+#' @noRd
 check_manager <- function(x,
                           arg = rlang::caller_arg(x),
                           call = rlang::caller_env()) {
@@ -112,6 +114,9 @@ check_manager <- function(x,
   invisible(x)
 }
 
+#' Validate gameweek ID
+#'
+#' @noRd
 check_gameweek <- function(x,
                            arg = rlang::caller_arg(x),
                            call = rlang::caller_env()) {
