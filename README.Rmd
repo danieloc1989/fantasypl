@@ -1,0 +1,119 @@
+---
+output: github_document
+---
+
+<!-- README.md is generated from README.Rmd. Please edit that file -->
+
+```{r, include = FALSE}
+knitr::opts_chunk$set(
+  collapse = TRUE,
+  comment = "#>",
+  fig.path = "man/figures/README-",
+  out.width = "100%"
+)
+```
+
+# fantasypl - An R Package for Fantasy Premier League Data
+
+<!-- badges: start -->
+[![Lifecycle: experimental](https://img.shields.io/badge/lifecycle-experimental-orange.svg)](https://lifecycle.r-lib.org/articles/stages.html#experimental)
+[![CRAN status](https://www.r-pkg.org/badges/version/fantasypl)](https://CRAN.R-project.org/package=fantasypl)
+[![Codecov test coverage](https://codecov.io/gh/danieloc1989/fantasypl/branch/master/graph/badge.svg)](https://app.codecov.io/gh/danieloc1989/fantasypl?branch=master)
+[![R-CMD-check](https://github.com/danieloc1989/fantasypl/actions/workflows/R-CMD-check.yaml/badge.svg)](https://github.com/danieloc1989/fantasypl/actions/workflows/R-CMD-check.yaml)
+<!-- badges: end -->
+
+The goal of `{fantasypl}` is to retrieve data from the Fantasy Premier League API endpoints and provide it in a convenient tabular format (tibble).
+
+## Installation
+
+You can install the development version of `{fantasypl}` from [GitHub](https://github.com/) with:
+
+``` r
+# install.packages("pak")
+pak::pak("danieloc1989/fantasypl")
+```
+There is no intention of releasing this package on CRAN.
+
+## Retrieving FPL data
+
+```{r}
+library(fantasypl)
+```
+
+The package provides functions to retrieve various types of FPL data, including player information, team details, gameweek information, and more.
+
+
+### Player Information
+
+You can obtain general player information for all `r nrow(fpl_player_info())` registered players in the Premier League:
+
+```{r player-general}
+# General details of all players
+fpl_player_info()
+```
+
+This function returns basic information such as names, teams, positions, and player IDs.
+
+For more all player season statistics, you can use:
+
+```{r player-season-stats}
+# Season statistics of all players 
+fpl_player_stats()
+```
+
+If more detailed level of information is required
+
+```{r}
+# Find player's ID
+haaland <- fpl_find_player_id("haaland")
+
+# Retrieve Haaland season statistics
+fpl_player_fixture_stats(haaland)
+```
+
+### Team Information
+
+To get information about all Premier League teams, you can use:
+
+```{r pl-teams}
+# PL team info
+fpl_team_info()
+```
+
+*Team information has not been updated as of yet on the system. A warning will be introduced to this function if this persists.*
+
+### Gameweek and Fixtures Information
+
+To obtain information about gameweeks and fixtures, you can use the following functions:
+
+```{r gameweek}
+# Information on gameweeks
+fpl_gameweek_info()
+
+# Each PL fixture
+fpl_fixtures_info()
+```
+
+
+### Weekly Dream Team
+
+You can retrieve the Dream Team for the current gameweek like this:
+
+```{r dreamteam}
+# The Dream Team for the current gameweek
+fpl_dreamteam()
+```
+
+
+## Additional Notes
+
+The API may be unavailable for a brief period after a gameweek deadline as the system updates manager selections.
+
+## Contributing
+
+If you find issues or have suggestions for improvements, please open an issue on the [GitHub repository](https://github.com/danieloc1989/fantasypl/issues). I welcome contributions and collaboration.
+
+## License
+This package is released under the MIT License.
+
+Happy fantasy gaming with `{fantasypl}`!
