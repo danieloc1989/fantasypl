@@ -64,42 +64,216 @@
 </nav><div class="container template-home">
 <div class="row">
   <main id="main" class="col-md-9"><div class="section level1">
-<div class="page-header"><h1 id="fantasy-premier-league-api-wrapper---fantasypl">Fantasy Premier League API Wrapper - {fantasypl}<a class="anchor" aria-label="anchor" href="#fantasy-premier-league-api-wrapper---fantasypl"></a>
+<div class="page-header"><h1 id="fantasypl---an-r-package-for-fantasy-premier-league-data">fantasypl - An R Package for Fantasy Premier League Data<a class="anchor" aria-label="anchor" href="#fantasypl---an-r-package-for-fantasy-premier-league-data"></a>
 </h1></div>
 <!-- badges: start -->
 
-<p>The goal of {fantasypl} is to retrieve data from the Fantasy Premier League API endpoints and provide it in a convenient tabular format (tibble).</p>
+<p>The goal of <a href="https://github.com/danieloc1989/fantasypl" class="external-link">fantasypl</a> is to retrieve data from the Fantasy Premier League API endpoints and provide it in a convenient tabular format (tibble).</p>
 <div class="section level2">
 <h2 id="installation">Installation<a class="anchor" aria-label="anchor" href="#installation"></a>
 </h2>
-<p>You can install the development version of {fantasypl} like so:</p>
+<p>You can install the development version of <a href="https://github.com/danieloc1989/fantasypl" class="external-link">fantasypl</a> from <a href="https://github.com/" class="external-link">GitHub</a> with:</p>
 <div class="sourceCode" id="cb1"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span><span class="co"># install.packages("pak")</span></span>
 <span><span class="fu">pak</span><span class="fu">::</span><span class="fu"><a href="http://pak.r-lib.org/reference/pak.html" class="external-link">pak</a></span><span class="op">(</span><span class="st">"danieloc1989/fantasypl"</span><span class="op">)</span></span></code></pre></div>
+<p>There is no intention of releasing this package on CRAN.</p>
 </div>
 <div class="section level2">
 <h2 id="retrieving-fpl-data">Retrieving FPL data<a class="anchor" aria-label="anchor" href="#retrieving-fpl-data"></a>
 </h2>
-<p><strong>Notice</strong> <em>The API is unavailable right after a gameweek deadline passes for about an hour, as the system updates selections. Calling a function during this time will return a 503 Error.</em></p>
-<p>There are a number of functions that including:</p>
-<ul>
-<li><p>team details - <code><a href="reference/fpl_team_info.html">fpl_team_info()</a></code></p></li>
-<li><p>fixture details - <code><a href="reference/fpl_fixtures_info.html">fpl_fixtures_info()</a></code></p></li>
-<li><p>player details - <code><a href="reference/fpl_player_info.html">fpl_player_info()</a></code>, <code><a href="reference/fpl_player_ict.html">fpl_player_ict()</a></code> and <code><a href="reference/fpl_player_stats.html">fpl_player_stats()</a></code></p></li>
-</ul>
 <div class="sourceCode" id="cb2"><pre class="downlit sourceCode r">
-<code class="sourceCode R"><span><span class="kw"><a href="https://rdrr.io/r/base/library.html" class="external-link">library</a></span><span class="op">(</span><span class="va"><a href="https://github.com/danieloc1989/fantasypl" class="external-link">fantasypl</a></span><span class="op">)</span></span>
+<code class="sourceCode R"><span><span class="kw"><a href="https://rdrr.io/r/base/library.html" class="external-link">library</a></span><span class="op">(</span><span class="va"><a href="https://github.com/danieloc1989/fantasypl" class="external-link">fantasypl</a></span><span class="op">)</span></span></code></pre></div>
+<p>The package provides functions to retrieve various types of FPL data, including player information, team details, gameweek information, and more.</p>
+<div class="section level3">
+<h3 id="player-information">Player Information<a class="anchor" aria-label="anchor" href="#player-information"></a>
+</h3>
+<p>You can obtain general player information for all 670 registered players in the Premier League:</p>
+<div class="sourceCode" id="cb3"><pre class="downlit sourceCode r">
+<code class="sourceCode R"><span><span class="co"># General details of all players</span></span>
+<span><span class="fu"><a href="reference/fpl_player_info.html">fpl_player_info</a></span><span class="op">(</span><span class="op">)</span></span>
+<span><span class="co">#&gt; # A tibble: 670 × 9</span></span>
+<span><span class="co">#&gt;    player_season_id player_name  first_name second_name       team  squad_number</span></span>
+<span><span class="co">#&gt;               &lt;int&gt; &lt;chr&gt;        &lt;chr&gt;      &lt;chr&gt;             &lt;chr&gt; &lt;lgl&gt;       </span></span>
+<span><span class="co">#&gt;  1                1 Balogun      Folarin    Balogun           ARS   NA          </span></span>
+<span><span class="co">#&gt;  2                2 Cédric       Cédric     Alves Soares      ARS   NA          </span></span>
+<span><span class="co">#&gt;  3                3 M.Elneny     Mohamed    Elneny            ARS   NA          </span></span>
+<span><span class="co">#&gt;  4                4 Fábio Vieira Fábio      Ferreira Vieira   ARS   NA          </span></span>
+<span><span class="co">#&gt;  5                5 Gabriel      Gabriel    dos Santos Magal… ARS   NA          </span></span>
+<span><span class="co">#&gt;  6                6 Havertz      Kai        Havertz           ARS   NA          </span></span>
+<span><span class="co">#&gt;  7                7 Holding      Rob        Holding           ARS   NA          </span></span>
+<span><span class="co">#&gt;  8                8 G.Jesus      Gabriel    Fernando de Jesus ARS   NA          </span></span>
+<span><span class="co">#&gt;  9                9 Jorginho     Jorge Luiz Frello Filho      ARS   NA          </span></span>
+<span><span class="co">#&gt; 10               10 Kiwior       Jakub      Kiwior            ARS   NA          </span></span>
+<span><span class="co">#&gt; # ℹ 660 more rows</span></span>
+<span><span class="co">#&gt; # ℹ 3 more variables: player_position &lt;chr&gt;, player_fpl_code &lt;int&gt;,</span></span>
+<span><span class="co">#&gt; #   special &lt;lgl&gt;</span></span></code></pre></div>
+<p>This function returns basic information such as names, teams, positions, and player IDs.</p>
+<p>For more all player season statistics, you can use:</p>
+<div class="sourceCode" id="cb4"><pre class="downlit sourceCode r">
+<code class="sourceCode R"><span><span class="co"># Season statistics of all players </span></span>
+<span><span class="fu"><a href="reference/fpl_player_stats.html">fpl_player_stats</a></span><span class="op">(</span><span class="op">)</span></span>
+<span><span class="co">#&gt; # A tibble: 670 × 53</span></span>
+<span><span class="co">#&gt;    player_season_id player_name  selected_pct selected_rank selected_rank_type</span></span>
+<span><span class="co">#&gt;               &lt;int&gt; &lt;chr&gt;               &lt;dbl&gt;         &lt;int&gt;              &lt;int&gt;</span></span>
+<span><span class="co">#&gt;  1                1 Balogun             0.007           203                 37</span></span>
+<span><span class="co">#&gt;  2                2 Cédric              0.004           257                 95</span></span>
+<span><span class="co">#&gt;  3                3 M.Elneny            0.001           430                141</span></span>
+<span><span class="co">#&gt;  4                4 Fábio Vieira        0.001           417                132</span></span>
+<span><span class="co">#&gt;  5                5 Gabriel             0.265            10                  3</span></span>
+<span><span class="co">#&gt;  6                6 Havertz             0.038            88                 28</span></span>
+<span><span class="co">#&gt;  7                7 Holding             0.002           340                130</span></span>
+<span><span class="co">#&gt;  8                8 G.Jesus             0.013           151                 27</span></span>
+<span><span class="co">#&gt;  9                9 Jorginho            0.002           318                 94</span></span>
+<span><span class="co">#&gt; 10               10 Kiwior              0.001           425                165</span></span>
+<span><span class="co">#&gt; # ℹ 660 more rows</span></span>
+<span><span class="co">#&gt; # ℹ 48 more variables: current_price &lt;dbl&gt;, now_cost_rank &lt;int&gt;,</span></span>
+<span><span class="co">#&gt; #   now_cost_rank_type &lt;int&gt;, cost_change_start &lt;dbl&gt;,</span></span>
+<span><span class="co">#&gt; #   cost_change_start_fall &lt;dbl&gt;, cost_change_event &lt;dbl&gt;,</span></span>
+<span><span class="co">#&gt; #   cost_change_event_fall &lt;dbl&gt;, total_transfers_in &lt;int&gt;,</span></span>
+<span><span class="co">#&gt; #   gw_transfers_in &lt;int&gt;, transfers_out &lt;int&gt;, transfers_out_event &lt;int&gt;,</span></span>
+<span><span class="co">#&gt; #   minutes &lt;int&gt;, starts &lt;int&gt;, starts_per_90 &lt;dbl&gt;, total_points &lt;int&gt;, …</span></span></code></pre></div>
+<p>If more detailed level of information is required</p>
+<div class="sourceCode" id="cb5"><pre class="downlit sourceCode r">
+<code class="sourceCode R"><span><span class="co"># Find player's ID</span></span>
+<span><span class="va">haaland</span> <span class="op">&lt;-</span> <span class="fu"><a href="reference/fpl_find_player_id.html">fpl_find_player_id</a></span><span class="op">(</span><span class="st">"haaland"</span><span class="op">)</span></span>
+<span><span class="co">#&gt; ✔ Haaland (Erling Haaland) for MCI matched your search.</span></span>
 <span></span>
-<span><span class="co"># get Premier League team information</span></span>
-<span><span class="fu"><a href="reference/fpl_team_info.html">fpl_team_info</a></span><span class="op">(</span><span class="op">)</span></span></code></pre></div>
+<span><span class="co"># Retrieve Haaland season statistics</span></span>
+<span><span class="fu"><a href="reference/fpl_player_fixture_stats.html">fpl_player_fixture_stats</a></span><span class="op">(</span><span class="va">haaland</span><span class="op">)</span></span>
+<span><span class="co">#&gt; Haaland's per game season statistics</span></span>
+<span><span class="co">#&gt; # A tibble: 2 × 31</span></span>
+<span><span class="co">#&gt;   gameweek game_id opponent total_points starts minutes goals_scored assists</span></span>
+<span><span class="co">#&gt;      &lt;int&gt;   &lt;int&gt; &lt;chr&gt;           &lt;int&gt;  &lt;int&gt;   &lt;int&gt;        &lt;int&gt;   &lt;int&gt;</span></span>
+<span><span class="co">#&gt; 1        1       1 BUR                13      1      79            2       0</span></span>
+<span><span class="co">#&gt; 2        2      16 NEW                 2      1      90            0       0</span></span>
+<span><span class="co">#&gt; # ℹ 23 more variables: clean_sheets &lt;int&gt;, goals_conceded &lt;int&gt;,</span></span>
+<span><span class="co">#&gt; #   own_goals &lt;int&gt;, penalties_saved &lt;int&gt;, penalties_missed &lt;int&gt;,</span></span>
+<span><span class="co">#&gt; #   yellow_cards &lt;int&gt;, red_cards &lt;int&gt;, saves &lt;int&gt;, bonus &lt;int&gt;, bps &lt;int&gt;,</span></span>
+<span><span class="co">#&gt; #   influence &lt;chr&gt;, creativity &lt;chr&gt;, threat &lt;chr&gt;, ict_index &lt;chr&gt;,</span></span>
+<span><span class="co">#&gt; #   xg_scored &lt;chr&gt;, xa &lt;chr&gt;, xg_involvement &lt;chr&gt;, xg_conceded &lt;chr&gt;,</span></span>
+<span><span class="co">#&gt; #   price &lt;dbl&gt;, selected &lt;int&gt;, transfers_in &lt;int&gt;, transfers_out &lt;int&gt;,</span></span>
+<span><span class="co">#&gt; #   transfers_balance &lt;int&gt;</span></span></code></pre></div>
+</div>
+<div class="section level3">
+<h3 id="team-information">Team Information<a class="anchor" aria-label="anchor" href="#team-information"></a>
+</h3>
+<p>To get information about all Premier League teams, you can use:</p>
+<div class="sourceCode" id="cb6"><pre class="downlit sourceCode r">
+<code class="sourceCode R"><span><span class="co"># PL team info</span></span>
+<span><span class="fu"><a href="reference/fpl_team_info.html">fpl_team_info</a></span><span class="op">(</span><span class="op">)</span></span>
+<span><span class="co">#&gt; # A tibble: 20 × 18</span></span>
+<span><span class="co">#&gt;    team_fpl_code team_name     team_abb season_id form  played   win  draw  loss</span></span>
+<span><span class="co">#&gt;            &lt;int&gt; &lt;chr&gt;         &lt;chr&gt;        &lt;int&gt; &lt;lgl&gt;  &lt;int&gt; &lt;int&gt; &lt;int&gt; &lt;int&gt;</span></span>
+<span><span class="co">#&gt;  1             3 Arsenal       ARS              1 NA         0     0     0     0</span></span>
+<span><span class="co">#&gt;  2             7 Aston Villa   AVL              2 NA         0     0     0     0</span></span>
+<span><span class="co">#&gt;  3            91 Bournemouth   BOU              3 NA         0     0     0     0</span></span>
+<span><span class="co">#&gt;  4            94 Brentford     BRE              4 NA         0     0     0     0</span></span>
+<span><span class="co">#&gt;  5            36 Brighton      BHA              5 NA         0     0     0     0</span></span>
+<span><span class="co">#&gt;  6            90 Burnley       BUR              6 NA         0     0     0     0</span></span>
+<span><span class="co">#&gt;  7             8 Chelsea       CHE              7 NA         0     0     0     0</span></span>
+<span><span class="co">#&gt;  8            31 Crystal Pala… CRY              8 NA         0     0     0     0</span></span>
+<span><span class="co">#&gt;  9            11 Everton       EVE              9 NA         0     0     0     0</span></span>
+<span><span class="co">#&gt; 10            54 Fulham        FUL             10 NA         0     0     0     0</span></span>
+<span><span class="co">#&gt; 11            14 Liverpool     LIV             11 NA         0     0     0     0</span></span>
+<span><span class="co">#&gt; 12           102 Luton         LUT             12 NA         0     0     0     0</span></span>
+<span><span class="co">#&gt; 13            43 Man City      MCI             13 NA         0     0     0     0</span></span>
+<span><span class="co">#&gt; 14             1 Man Utd       MUN             14 NA         0     0     0     0</span></span>
+<span><span class="co">#&gt; 15             4 Newcastle     NEW             15 NA         0     0     0     0</span></span>
+<span><span class="co">#&gt; 16            17 Nott'm Forest NFO             16 NA         0     0     0     0</span></span>
+<span><span class="co">#&gt; 17            49 Sheffield Utd SHU             17 NA         0     0     0     0</span></span>
+<span><span class="co">#&gt; 18             6 Spurs         TOT             18 NA         0     0     0     0</span></span>
+<span><span class="co">#&gt; 19            21 West Ham      WHU             19 NA         0     0     0     0</span></span>
+<span><span class="co">#&gt; 20            39 Wolves        WOL             20 NA         0     0     0     0</span></span>
+<span><span class="co">#&gt; # ℹ 9 more variables: points &lt;int&gt;, league_position &lt;int&gt;, strength &lt;int&gt;,</span></span>
+<span><span class="co">#&gt; #   strength_overall_home &lt;int&gt;, strength_defence_home &lt;int&gt;,</span></span>
+<span><span class="co">#&gt; #   strength_attack_home &lt;int&gt;, strength_overall_away &lt;int&gt;,</span></span>
+<span><span class="co">#&gt; #   strength_defence_away &lt;int&gt;, strength_attack_away &lt;int&gt;</span></span></code></pre></div>
+<p><em>Team information has not been updated as of yet on the system. A warning will be introduced to this function if this persists.</em></p>
+</div>
+<div class="section level3">
+<h3 id="gameweek-and-fixtures-information">Gameweek and Fixtures Information<a class="anchor" aria-label="anchor" href="#gameweek-and-fixtures-information"></a>
+</h3>
+<p>To obtain information about gameweeks and fixtures, you can use the following functions:</p>
+<div class="sourceCode" id="cb7"><pre class="downlit sourceCode r">
+<code class="sourceCode R"><span><span class="co"># Information on gameweeks</span></span>
+<span><span class="fu"><a href="reference/fpl_gameweek_info.html">fpl_gameweek_info</a></span><span class="op">(</span><span class="op">)</span></span>
+<span><span class="co">#&gt; # A tibble: 38 × 17</span></span>
+<span><span class="co">#&gt;    gameweek  gw_deadline         gw_finished data_checked gw_current gw_previous</span></span>
+<span><span class="co">#&gt;    &lt;chr&gt;     &lt;dttm&gt;              &lt;lgl&gt;       &lt;lgl&gt;        &lt;lgl&gt;      &lt;lgl&gt;      </span></span>
+<span><span class="co">#&gt;  1 Gameweek… 2023-08-11 17:30:00 TRUE        TRUE         FALSE      TRUE       </span></span>
+<span><span class="co">#&gt;  2 Gameweek… 2023-08-18 17:15:00 TRUE        TRUE         TRUE       FALSE      </span></span>
+<span><span class="co">#&gt;  3 Gameweek… 2023-08-25 17:30:00 FALSE       FALSE        FALSE      FALSE      </span></span>
+<span><span class="co">#&gt;  4 Gameweek… 2023-09-01 17:30:00 FALSE       FALSE        FALSE      FALSE      </span></span>
+<span><span class="co">#&gt;  5 Gameweek… 2023-09-16 10:00:00 FALSE       FALSE        FALSE      FALSE      </span></span>
+<span><span class="co">#&gt;  6 Gameweek… 2023-09-23 12:30:00 FALSE       FALSE        FALSE      FALSE      </span></span>
+<span><span class="co">#&gt;  7 Gameweek… 2023-09-30 10:00:00 FALSE       FALSE        FALSE      FALSE      </span></span>
+<span><span class="co">#&gt;  8 Gameweek… 2023-10-07 10:00:00 FALSE       FALSE        FALSE      FALSE      </span></span>
+<span><span class="co">#&gt;  9 Gameweek… 2023-10-21 10:00:00 FALSE       FALSE        FALSE      FALSE      </span></span>
+<span><span class="co">#&gt; 10 Gameweek… 2023-10-27 17:30:00 FALSE       FALSE        FALSE      FALSE      </span></span>
+<span><span class="co">#&gt; # ℹ 28 more rows</span></span>
+<span><span class="co">#&gt; # ℹ 11 more variables: gw_next &lt;lgl&gt;, gw_highest_score &lt;int&gt;,</span></span>
+<span><span class="co">#&gt; #   gw_average_score &lt;int&gt;, transfers_made &lt;int&gt;, chip_plays &lt;list&gt;,</span></span>
+<span><span class="co">#&gt; #   player_most_selected &lt;chr&gt;, player_most_captained &lt;chr&gt;,</span></span>
+<span><span class="co">#&gt; #   player_most_vice_captained &lt;chr&gt;, player_most_transferred_in &lt;chr&gt;,</span></span>
+<span><span class="co">#&gt; #   top_player &lt;chr&gt;, top_player_points &lt;int&gt;</span></span>
+<span></span>
+<span><span class="co"># Each PL fixture</span></span>
+<span><span class="fu"><a href="reference/fpl_fixtures_info.html">fpl_fixtures_info</a></span><span class="op">(</span><span class="op">)</span></span>
+<span><span class="co">#&gt; # A tibble: 380 × 12</span></span>
+<span><span class="co">#&gt;    gw_id game_id team_h team_h_score team_a team_a_score stats        </span></span>
+<span><span class="co">#&gt;    &lt;int&gt;   &lt;int&gt; &lt;chr&gt;         &lt;int&gt; &lt;chr&gt;         &lt;int&gt; &lt;list&gt;       </span></span>
+<span><span class="co">#&gt;  1     1       1 BUR               0 MCI               3 &lt;df [10 × 3]&gt;</span></span>
+<span><span class="co">#&gt;  2     1       2 ARS               2 NFO               1 &lt;df [10 × 3]&gt;</span></span>
+<span><span class="co">#&gt;  3     1       3 BOU               1 WHU               1 &lt;df [10 × 3]&gt;</span></span>
+<span><span class="co">#&gt;  4     1       4 BHA               4 LUT               1 &lt;df [10 × 3]&gt;</span></span>
+<span><span class="co">#&gt;  5     1       5 EVE               0 FUL               1 &lt;df [10 × 3]&gt;</span></span>
+<span><span class="co">#&gt;  6     1       6 NEW               5 AVL               1 &lt;df [10 × 3]&gt;</span></span>
+<span><span class="co">#&gt;  7     1       7 SHU               0 CRY               1 &lt;df [10 × 3]&gt;</span></span>
+<span><span class="co">#&gt;  8     1       8 BRE               2 TOT               2 &lt;df [10 × 3]&gt;</span></span>
+<span><span class="co">#&gt;  9     1       9 CHE               1 LIV               1 &lt;df [10 × 3]&gt;</span></span>
+<span><span class="co">#&gt; 10     1      10 MUN               1 WOL               0 &lt;df [10 × 3]&gt;</span></span>
+<span><span class="co">#&gt; # ℹ 370 more rows</span></span>
+<span><span class="co">#&gt; # ℹ 5 more variables: kickoff_time &lt;dttm&gt;, kickoff_time_provisional &lt;lgl&gt;,</span></span>
+<span><span class="co">#&gt; #   started &lt;lgl&gt;, finished &lt;lgl&gt;, fpl_game_code &lt;int&gt;</span></span></code></pre></div>
+</div>
+<div class="section level3">
+<h3 id="weekly-dream-team">Weekly Dream Team<a class="anchor" aria-label="anchor" href="#weekly-dream-team"></a>
+</h3>
+<p>You can retrieve the Dream Team for the current gameweek like this:</p>
+<div class="sourceCode" id="cb8"><pre class="downlit sourceCode r">
+<code class="sourceCode R"><span><span class="co"># The Dream Team for the current gameweek</span></span>
+<span><span class="fu"><a href="reference/fpl_dreamteam.html">fpl_dreamteam</a></span><span class="op">(</span><span class="op">)</span></span>
+<span><span class="co">#&gt; # A tibble: 11 × 4</span></span>
+<span><span class="co">#&gt;    player    points team  position</span></span>
+<span><span class="co">#&gt;    &lt;chr&gt;      &lt;int&gt; &lt;chr&gt; &lt;chr&gt;   </span></span>
+<span><span class="co">#&gt;  1 Vicario       11 TOT   GKP     </span></span>
+<span><span class="co">#&gt;  2 Estupiñan     11 BHA   DEF     </span></span>
+<span><span class="co">#&gt;  3 Aurier        10 NFO   DEF     </span></span>
+<span><span class="co">#&gt;  4 Digne         10 AVL   DEF     </span></span>
+<span><span class="co">#&gt;  5 Mbeumo        16 BRE   MID     </span></span>
+<span><span class="co">#&gt;  6 March         15 BHA   MID     </span></span>
+<span><span class="co">#&gt;  7 Bailey        14 AVL   MID     </span></span>
+<span><span class="co">#&gt;  8 Mitoma        12 BHA   MID     </span></span>
+<span><span class="co">#&gt;  9 Diogo J.      12 LIV   MID     </span></span>
+<span><span class="co">#&gt; 10 Wissa         11 BRE   FWD     </span></span>
+<span><span class="co">#&gt; 11 Antonio        9 WHU   FWD</span></span></code></pre></div>
+</div>
 </div>
 <div class="section level2">
-<h2 id="todo">TODO<a class="anchor" aria-label="anchor" href="#todo"></a>
+<h2 id="additional-notes">Additional Notes<a class="anchor" aria-label="anchor" href="#additional-notes"></a>
 </h2>
-<ul>
-<li><p>Finalise the endpoint connections functions.</p></li>
-<li><p>Update various functions to deal with updates to data types, once the season begins.</p></li>
-</ul>
+<p>The API may be unavailable for a brief period after a gameweek deadline as the system updates manager selections.</p>
+</div>
+<div class="section level2">
+<h2 id="contributing">Contributing<a class="anchor" aria-label="anchor" href="#contributing"></a>
+</h2>
+<p>If you find issues or have suggestions for improvements, please open an issue on the <a href="https://github.com/danieloc1989/fantasypl/issues" class="external-link">GitHub repository</a>. I welcome contributions and collaboration.</p>
+</div>
+<div class="section level2">
+<h2 id="license">License<a class="anchor" aria-label="anchor" href="#license"></a>
+</h2>
+<p>This package is released under the MIT License.</p>
+<p>Happy fantasy gaming with <a href="https://github.com/danieloc1989/fantasypl" class="external-link">fantasypl</a>!</p>
 </div>
 </div>
   </main><aside class="col-md-3"><div class="links">
