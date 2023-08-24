@@ -29,6 +29,7 @@ fpl_dreamteam <- function(gameweek_id = NULL) {
   gameweek_id <- gameweek_id %||% current_gw()
   gameweek_id <- check_gameweek(gameweek_id)
 
+  cli::cli_alert_info("The dream team for {.strong Gameweek {gameweek_id}} is:")
 
   player_details <-
     call_api("bootstrap-static")$elements |>
