@@ -5,13 +5,15 @@
 
 <!-- badges: start -->
 
+[![Fantasy Premier
+League](https://img.shields.io/badge/Fantasy_Premier_League-360D3A?logo=premierleague)](https://fantasy.premierleague.com/)
 [![Lifecycle:
 experimental](https://img.shields.io/badge/lifecycle-experimental-orange.svg)](https://lifecycle.r-lib.org/articles/stages.html#experimental)
+[![R-CMD-check](https://github.com/danieloc1989/fantasypl/actions/workflows/R-CMD-check.yaml/badge.svg)](https://github.com/danieloc1989/fantasypl/actions/workflows/R-CMD-check.yaml)
 [![CRAN
 status](https://www.r-pkg.org/badges/version/fantasypl)](https://CRAN.R-project.org/package=fantasypl)
 [![Codecov test
 coverage](https://codecov.io/gh/danieloc1989/fantasypl/branch/master/graph/badge.svg)](https://app.codecov.io/gh/danieloc1989/fantasypl?branch=master)
-[![R-CMD-check](https://github.com/danieloc1989/fantasypl/actions/workflows/R-CMD-check.yaml/badge.svg)](https://github.com/danieloc1989/fantasypl/actions/workflows/R-CMD-check.yaml)
 <!-- badges: end -->
 
 The goal of `{fantasypl}` is to retrieve data from the Fantasy Premier
@@ -42,13 +44,13 @@ more.
 
 ### Player Information
 
-You can obtain general player information for all 670 registered players
+You can obtain general player information for all 714 registered players
 in the Premier League:
 
 ``` r
 # General details of all players
 fpl_player_info()
-#> # A tibble: 670 × 9
+#> # A tibble: 714 × 9
 #>    player_season_id player_name  first_name second_name       team  squad_number
 #>               <int> <chr>        <chr>      <chr>             <chr> <lgl>       
 #>  1                1 Balogun      Folarin    Balogun           ARS   NA          
@@ -57,11 +59,11 @@ fpl_player_info()
 #>  4                4 Fábio Vieira Fábio      Ferreira Vieira   ARS   NA          
 #>  5                5 Gabriel      Gabriel    dos Santos Magal… ARS   NA          
 #>  6                6 Havertz      Kai        Havertz           ARS   NA          
-#>  7                7 Holding      Rob        Holding           ARS   NA          
-#>  8                8 G.Jesus      Gabriel    Fernando de Jesus ARS   NA          
-#>  9                9 Jorginho     Jorge Luiz Frello Filho      ARS   NA          
-#> 10               10 Kiwior       Jakub      Kiwior            ARS   NA          
-#> # ℹ 660 more rows
+#>  7                8 G.Jesus      Gabriel    Fernando de Jesus ARS   NA          
+#>  8                9 Jorginho     Jorge Luiz Frello Filho      ARS   NA          
+#>  9               10 Kiwior       Jakub      Kiwior            ARS   NA          
+#> 10               11 Marquinhos   Marcus     Oliveira Alencar  ARS   NA          
+#> # ℹ 704 more rows
 #> # ℹ 3 more variables: player_position <chr>, player_fpl_code <int>,
 #> #   special <lgl>
 ```
@@ -74,20 +76,20 @@ For more all player season statistics, you can use:
 ``` r
 # Season statistics of all players 
 fpl_player_stats()
-#> # A tibble: 670 × 53
+#> # A tibble: 714 × 53
 #>    player_season_id player_name  selected_pct selected_rank selected_rank_type
 #>               <int> <chr>               <dbl>         <int>              <int>
-#>  1                1 Balogun             0.007           203                 37
-#>  2                2 Cédric              0.004           257                 95
-#>  3                3 M.Elneny            0.001           430                141
-#>  4                4 Fábio Vieira        0.001           417                132
-#>  5                5 Gabriel             0.265            10                  3
-#>  6                6 Havertz             0.038            88                 28
-#>  7                7 Holding             0.002           340                130
-#>  8                8 G.Jesus             0.013           151                 27
-#>  9                9 Jorginho            0.002           318                 94
-#> 10               10 Kiwior              0.001           425                165
-#> # ℹ 660 more rows
+#>  1                1 Balogun             0.004           242                 41
+#>  2                2 Cédric              0.003           258                101
+#>  3                3 M.Elneny            0.001           448                146
+#>  4                4 Fábio Vieira        0.001           379                119
+#>  5                5 Gabriel             0.143            26                  7
+#>  6                6 Havertz             0.021           117                 35
+#>  7                8 G.Jesus             0.025           109                 20
+#>  8                9 Jorginho            0.002           325                 97
+#>  9               10 Kiwior              0.001           423                165
+#> 10               11 Marquinhos          0.001           469                160
+#> # ℹ 704 more rows
 #> # ℹ 48 more variables: current_price <dbl>, now_cost_rank <int>,
 #> #   now_cost_rank_type <int>, cost_change_start <dbl>,
 #> #   cost_change_start_fall <dbl>, cost_change_event <dbl>,
@@ -106,11 +108,13 @@ haaland <- fpl_find_player_id("haaland")
 # Retrieve Haaland season statistics
 fpl_player_fixture_stats(haaland)
 #> Haaland's per game season statistics
-#> # A tibble: 2 × 31
+#> # A tibble: 4 × 31
 #>   gameweek game_id opponent total_points starts minutes goals_scored assists
 #>      <int>   <int> <chr>           <int>  <int>   <int>        <int>   <int>
 #> 1        1       1 BUR                13      1      79            2       0
 #> 2        2      16 NEW                 2      1      90            0       0
+#> 3        3      30 SHU                 4      1      90            1       0
+#> 4        4      39 FUL                20      1      90            3       1
 #> # ℹ 23 more variables: clean_sheets <int>, goals_conceded <int>,
 #> #   own_goals <int>, penalties_saved <int>, penalties_missed <int>,
 #> #   yellow_cards <int>, red_cards <int>, saves <int>, bonus <int>, bps <int>,
@@ -170,10 +174,10 @@ fpl_gameweek_info()
 #> # A tibble: 38 × 17
 #>    gameweek  gw_deadline         gw_finished data_checked gw_current gw_previous
 #>    <chr>     <dttm>              <lgl>       <lgl>        <lgl>      <lgl>      
-#>  1 Gameweek… 2023-08-11 17:30:00 TRUE        TRUE         FALSE      TRUE       
-#>  2 Gameweek… 2023-08-18 17:15:00 TRUE        TRUE         TRUE       FALSE      
-#>  3 Gameweek… 2023-08-25 17:30:00 FALSE       FALSE        FALSE      FALSE      
-#>  4 Gameweek… 2023-09-01 17:30:00 FALSE       FALSE        FALSE      FALSE      
+#>  1 Gameweek… 2023-08-11 17:30:00 TRUE        TRUE         FALSE      FALSE      
+#>  2 Gameweek… 2023-08-18 17:15:00 TRUE        TRUE         FALSE      FALSE      
+#>  3 Gameweek… 2023-08-25 17:30:00 TRUE        TRUE         FALSE      TRUE       
+#>  4 Gameweek… 2023-09-01 17:30:00 TRUE        TRUE         TRUE       FALSE      
 #>  5 Gameweek… 2023-09-16 10:00:00 FALSE       FALSE        FALSE      FALSE      
 #>  6 Gameweek… 2023-09-23 12:30:00 FALSE       FALSE        FALSE      FALSE      
 #>  7 Gameweek… 2023-09-30 10:00:00 FALSE       FALSE        FALSE      FALSE      
@@ -214,20 +218,21 @@ You can retrieve the Dream Team for the current gameweek like this:
 ``` r
 # The Dream Team for the current gameweek
 fpl_dreamteam()
+#> ℹ The dream team for Gameweek 4 is:
 #> # A tibble: 11 × 4
-#>    player    points team  position
-#>    <chr>      <int> <chr> <chr>   
-#>  1 Vicario       11 TOT   GKP     
-#>  2 Estupiñan     11 BHA   DEF     
-#>  3 Aurier        10 NFO   DEF     
-#>  4 Digne         10 AVL   DEF     
-#>  5 Mbeumo        16 BRE   MID     
-#>  6 March         15 BHA   MID     
-#>  7 Bailey        14 AVL   MID     
-#>  8 Mitoma        12 BHA   MID     
-#>  9 Diogo J.      12 LIV   MID     
-#> 10 Wissa         11 BRE   FWD     
-#> 11 Antonio        9 WHU   FWD
+#>    player           points team  position
+#>    <chr>             <int> <chr> <chr>   
+#>  1 A.Becker              8 LIV   GKP     
+#>  2 Alexander-Arnold     12 LIV   DEF     
+#>  3 Zouma                11 WHU   DEF     
+#>  4 Boly                  9 NFO   DEF     
+#>  5 Son                  20 TOT   MID     
+#>  6 Gilmour              11 BHA   MID     
+#>  7 Rice                 10 ARS   MID     
+#>  8 Solomon              10 TOT   MID     
+#>  9 Haaland              20 MCI   FWD     
+#> 10 Ferguson             17 BHA   FWD     
+#> 11 J.Alvarez            14 MCI   FWD
 ```
 
 ## Additional Notes
