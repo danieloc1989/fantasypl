@@ -73,20 +73,20 @@
     <div class="section level2">
     <h2 id="ref-examples">Examples<a class="anchor" aria-label="anchor" href="#ref-examples"></a></h2>
     <div class="sourceCode"><pre class="sourceCode r"><code><span class="r-in"><span><span class="fu">get_team_fixtures</span><span class="op">(</span><span class="fu"><a href="https://rdrr.io/r/base/c.html" class="external-link">c</a></span><span class="op">(</span><span class="st">"ARS"</span>, <span class="st">"CHE"</span><span class="op">)</span><span class="op">)</span></span></span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> <span style="color: #949494;"># A tibble: 70 × 7</span></span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> <span style="color: #949494;"># A tibble: 66 × 7</span></span>
 <span class="r-out co"><span class="r-pr">#&gt;</span>    gw_id game_id team_h team_a kickoff_time        kickoff_time_provisional</span>
 <span class="r-out co"><span class="r-pr">#&gt;</span>    <span style="color: #949494; font-style: italic;">&lt;int&gt;</span>   <span style="color: #949494; font-style: italic;">&lt;int&gt;</span> <span style="color: #949494; font-style: italic;">&lt;chr&gt;</span>  <span style="color: #949494; font-style: italic;">&lt;chr&gt;</span>  <span style="color: #949494; font-style: italic;">&lt;dttm&gt;</span>              <span style="color: #949494; font-style: italic;">&lt;lgl&gt;</span>                   </span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> <span style="color: #BCBCBC;"> 1</span>     3      21 ARS    FUL    2023-08-26 <span style="color: #949494;">14:00:00</span> FALSE                   </span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> <span style="color: #BCBCBC;"> 2</span>     3      26 CHE    LUT    2023-08-25 <span style="color: #949494;">19:00:00</span> FALSE                   </span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> <span style="color: #BCBCBC;"> 3</span>     4      31 ARS    MUN    2023-09-03 <span style="color: #949494;">15:30:00</span> FALSE                   </span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> <span style="color: #BCBCBC;"> 4</span>     4      35 CHE    NFO    2023-09-02 <span style="color: #949494;">14:00:00</span> FALSE                   </span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> <span style="color: #BCBCBC;"> 5</span>     5      42 BOU    CHE    2023-09-17 <span style="color: #949494;">13:00:00</span> FALSE                   </span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> <span style="color: #BCBCBC;"> 6</span>     5      43 EVE    ARS    2023-09-16 <span style="color: #949494;">16:30:00</span> FALSE                   </span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> <span style="color: #BCBCBC;"> 7</span>     6      51 ARS    TOT    2023-09-24 <span style="color: #949494;">13:00:00</span> FALSE                   </span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> <span style="color: #BCBCBC;"> 8</span>     6      55 CHE    AVL    2023-09-23 <span style="color: #949494;">14:00:00</span> FALSE                   </span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> <span style="color: #BCBCBC;"> 9</span>     7      62 BOU    ARS    2023-09-30 <span style="color: #949494;">14:00:00</span> FALSE                   </span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> <span style="color: #BCBCBC;">10</span>     7      64 FUL    CHE    2023-10-02 <span style="color: #949494;">19:00:00</span> FALSE                   </span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> <span style="color: #949494;"># ℹ 60 more rows</span></span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> <span style="color: #BCBCBC;"> 1</span>     5      42 BOU    CHE    2023-09-17 <span style="color: #949494;">13:00:00</span> FALSE                   </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> <span style="color: #BCBCBC;"> 2</span>     5      43 EVE    ARS    2023-09-17 <span style="color: #949494;">15:30:00</span> FALSE                   </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> <span style="color: #BCBCBC;"> 3</span>     6      51 ARS    TOT    2023-09-24 <span style="color: #949494;">13:00:00</span> FALSE                   </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> <span style="color: #BCBCBC;"> 4</span>     6      55 CHE    AVL    2023-09-24 <span style="color: #949494;">13:00:00</span> FALSE                   </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> <span style="color: #BCBCBC;"> 5</span>     7      62 BOU    ARS    2023-09-30 <span style="color: #949494;">14:00:00</span> FALSE                   </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> <span style="color: #BCBCBC;"> 6</span>     7      64 FUL    CHE    2023-10-02 <span style="color: #949494;">19:00:00</span> FALSE                   </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> <span style="color: #BCBCBC;"> 7</span>     8      71 ARS    MCI    2023-10-08 <span style="color: #949494;">15:30:00</span> FALSE                   </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> <span style="color: #BCBCBC;"> 8</span>     8      73 BUR    CHE    2023-10-07 <span style="color: #949494;">14:00:00</span> FALSE                   </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> <span style="color: #BCBCBC;"> 9</span>     9      84 CHE    ARS    2023-10-21 <span style="color: #949494;">16:30:00</span> FALSE                   </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> <span style="color: #BCBCBC;">10</span>    10      91 ARS    SHU    2023-10-28 <span style="color: #949494;">14:00:00</span> FALSE                   </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> <span style="color: #949494;"># ℹ 56 more rows</span></span>
 <span class="r-out co"><span class="r-pr">#&gt;</span> <span style="color: #949494;"># ℹ 1 more variable: fpl_game_code &lt;int&gt;</span></span>
 <span class="r-in"><span></span></span>
 </code></pre></div>

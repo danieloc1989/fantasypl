@@ -75,7 +75,7 @@
 <p>You can install the development version of <a href="https://github.com/danieloc1989/fantasypl" class="external-link">fantasypl</a> from <a href="https://github.com/" class="external-link">GitHub</a> with:</p>
 <div class="sourceCode" id="cb1"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span><span class="co"># install.packages("pak")</span></span>
-<span><span class="fu">pak</span><span class="fu">::</span><span class="fu"><a href="http://pak.r-lib.org/reference/pak.html" class="external-link">pak</a></span><span class="op">(</span><span class="st">"danieloc1989/fantasypl"</span><span class="op">)</span></span></code></pre></div>
+<span><span class="fu">pak</span><span class="fu">::</span><span class="fu"><a href="https://pak.r-lib.org/reference/pak.html" class="external-link">pak</a></span><span class="op">(</span><span class="st">"danieloc1989/fantasypl"</span><span class="op">)</span></span></code></pre></div>
 <p>There is no intention of releasing this package on CRAN.</p>
 </div>
 <div class="section level2">
@@ -87,11 +87,11 @@
 <div class="section level3">
 <h3 id="player-information">Player Information<a class="anchor" aria-label="anchor" href="#player-information"></a>
 </h3>
-<p>You can obtain general player information for all 670 registered players in the Premier League:</p>
+<p>You can obtain general player information for all 714 registered players in the Premier League:</p>
 <div class="sourceCode" id="cb3"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span><span class="co"># General details of all players</span></span>
 <span><span class="fu"><a href="reference/fpl_player_info.html">fpl_player_info</a></span><span class="op">(</span><span class="op">)</span></span>
-<span><span class="co">#&gt; # A tibble: 670 × 9</span></span>
+<span><span class="co">#&gt; # A tibble: 714 × 9</span></span>
 <span><span class="co">#&gt;    player_season_id player_name  first_name second_name       team  squad_number</span></span>
 <span><span class="co">#&gt;               &lt;int&gt; &lt;chr&gt;        &lt;chr&gt;      &lt;chr&gt;             &lt;chr&gt; &lt;lgl&gt;       </span></span>
 <span><span class="co">#&gt;  1                1 Balogun      Folarin    Balogun           ARS   NA          </span></span>
@@ -100,11 +100,11 @@
 <span><span class="co">#&gt;  4                4 Fábio Vieira Fábio      Ferreira Vieira   ARS   NA          </span></span>
 <span><span class="co">#&gt;  5                5 Gabriel      Gabriel    dos Santos Magal… ARS   NA          </span></span>
 <span><span class="co">#&gt;  6                6 Havertz      Kai        Havertz           ARS   NA          </span></span>
-<span><span class="co">#&gt;  7                7 Holding      Rob        Holding           ARS   NA          </span></span>
-<span><span class="co">#&gt;  8                8 G.Jesus      Gabriel    Fernando de Jesus ARS   NA          </span></span>
-<span><span class="co">#&gt;  9                9 Jorginho     Jorge Luiz Frello Filho      ARS   NA          </span></span>
-<span><span class="co">#&gt; 10               10 Kiwior       Jakub      Kiwior            ARS   NA          </span></span>
-<span><span class="co">#&gt; # ℹ 660 more rows</span></span>
+<span><span class="co">#&gt;  7                8 G.Jesus      Gabriel    Fernando de Jesus ARS   NA          </span></span>
+<span><span class="co">#&gt;  8                9 Jorginho     Jorge Luiz Frello Filho      ARS   NA          </span></span>
+<span><span class="co">#&gt;  9               10 Kiwior       Jakub      Kiwior            ARS   NA          </span></span>
+<span><span class="co">#&gt; 10               11 Marquinhos   Marcus     Oliveira Alencar  ARS   NA          </span></span>
+<span><span class="co">#&gt; # ℹ 704 more rows</span></span>
 <span><span class="co">#&gt; # ℹ 3 more variables: player_position &lt;chr&gt;, player_fpl_code &lt;int&gt;,</span></span>
 <span><span class="co">#&gt; #   special &lt;lgl&gt;</span></span></code></pre></div>
 <p>This function returns basic information such as names, teams, positions, and player IDs.</p>
@@ -112,20 +112,20 @@
 <div class="sourceCode" id="cb4"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span><span class="co"># Season statistics of all players </span></span>
 <span><span class="fu"><a href="reference/fpl_player_stats.html">fpl_player_stats</a></span><span class="op">(</span><span class="op">)</span></span>
-<span><span class="co">#&gt; # A tibble: 670 × 53</span></span>
+<span><span class="co">#&gt; # A tibble: 714 × 53</span></span>
 <span><span class="co">#&gt;    player_season_id player_name  selected_pct selected_rank selected_rank_type</span></span>
 <span><span class="co">#&gt;               &lt;int&gt; &lt;chr&gt;               &lt;dbl&gt;         &lt;int&gt;              &lt;int&gt;</span></span>
-<span><span class="co">#&gt;  1                1 Balogun             0.007           203                 37</span></span>
-<span><span class="co">#&gt;  2                2 Cédric              0.004           257                 95</span></span>
-<span><span class="co">#&gt;  3                3 M.Elneny            0.001           430                141</span></span>
-<span><span class="co">#&gt;  4                4 Fábio Vieira        0.001           417                132</span></span>
-<span><span class="co">#&gt;  5                5 Gabriel             0.265            10                  3</span></span>
-<span><span class="co">#&gt;  6                6 Havertz             0.038            88                 28</span></span>
-<span><span class="co">#&gt;  7                7 Holding             0.002           340                130</span></span>
-<span><span class="co">#&gt;  8                8 G.Jesus             0.013           151                 27</span></span>
-<span><span class="co">#&gt;  9                9 Jorginho            0.002           318                 94</span></span>
-<span><span class="co">#&gt; 10               10 Kiwior              0.001           425                165</span></span>
-<span><span class="co">#&gt; # ℹ 660 more rows</span></span>
+<span><span class="co">#&gt;  1                1 Balogun             0.004           242                 41</span></span>
+<span><span class="co">#&gt;  2                2 Cédric              0.003           258                101</span></span>
+<span><span class="co">#&gt;  3                3 M.Elneny            0.001           448                146</span></span>
+<span><span class="co">#&gt;  4                4 Fábio Vieira        0.001           379                119</span></span>
+<span><span class="co">#&gt;  5                5 Gabriel             0.143            26                  7</span></span>
+<span><span class="co">#&gt;  6                6 Havertz             0.021           117                 35</span></span>
+<span><span class="co">#&gt;  7                8 G.Jesus             0.025           109                 20</span></span>
+<span><span class="co">#&gt;  8                9 Jorginho            0.002           325                 97</span></span>
+<span><span class="co">#&gt;  9               10 Kiwior              0.001           423                165</span></span>
+<span><span class="co">#&gt; 10               11 Marquinhos          0.001           469                160</span></span>
+<span><span class="co">#&gt; # ℹ 704 more rows</span></span>
 <span><span class="co">#&gt; # ℹ 48 more variables: current_price &lt;dbl&gt;, now_cost_rank &lt;int&gt;,</span></span>
 <span><span class="co">#&gt; #   now_cost_rank_type &lt;int&gt;, cost_change_start &lt;dbl&gt;,</span></span>
 <span><span class="co">#&gt; #   cost_change_start_fall &lt;dbl&gt;, cost_change_event &lt;dbl&gt;,</span></span>
@@ -141,11 +141,13 @@
 <span><span class="co"># Retrieve Haaland season statistics</span></span>
 <span><span class="fu"><a href="reference/fpl_player_fixture_stats.html">fpl_player_fixture_stats</a></span><span class="op">(</span><span class="va">haaland</span><span class="op">)</span></span>
 <span><span class="co">#&gt; Haaland's per game season statistics</span></span>
-<span><span class="co">#&gt; # A tibble: 2 × 31</span></span>
+<span><span class="co">#&gt; # A tibble: 4 × 31</span></span>
 <span><span class="co">#&gt;   gameweek game_id opponent total_points starts minutes goals_scored assists</span></span>
 <span><span class="co">#&gt;      &lt;int&gt;   &lt;int&gt; &lt;chr&gt;           &lt;int&gt;  &lt;int&gt;   &lt;int&gt;        &lt;int&gt;   &lt;int&gt;</span></span>
 <span><span class="co">#&gt; 1        1       1 BUR                13      1      79            2       0</span></span>
 <span><span class="co">#&gt; 2        2      16 NEW                 2      1      90            0       0</span></span>
+<span><span class="co">#&gt; 3        3      30 SHU                 4      1      90            1       0</span></span>
+<span><span class="co">#&gt; 4        4      39 FUL                20      1      90            3       1</span></span>
 <span><span class="co">#&gt; # ℹ 23 more variables: clean_sheets &lt;int&gt;, goals_conceded &lt;int&gt;,</span></span>
 <span><span class="co">#&gt; #   own_goals &lt;int&gt;, penalties_saved &lt;int&gt;, penalties_missed &lt;int&gt;,</span></span>
 <span><span class="co">#&gt; #   yellow_cards &lt;int&gt;, red_cards &lt;int&gt;, saves &lt;int&gt;, bonus &lt;int&gt;, bps &lt;int&gt;,</span></span>
@@ -200,10 +202,10 @@
 <span><span class="co">#&gt; # A tibble: 38 × 17</span></span>
 <span><span class="co">#&gt;    gameweek  gw_deadline         gw_finished data_checked gw_current gw_previous</span></span>
 <span><span class="co">#&gt;    &lt;chr&gt;     &lt;dttm&gt;              &lt;lgl&gt;       &lt;lgl&gt;        &lt;lgl&gt;      &lt;lgl&gt;      </span></span>
-<span><span class="co">#&gt;  1 Gameweek… 2023-08-11 17:30:00 TRUE        TRUE         FALSE      TRUE       </span></span>
-<span><span class="co">#&gt;  2 Gameweek… 2023-08-18 17:15:00 TRUE        TRUE         TRUE       FALSE      </span></span>
-<span><span class="co">#&gt;  3 Gameweek… 2023-08-25 17:30:00 FALSE       FALSE        FALSE      FALSE      </span></span>
-<span><span class="co">#&gt;  4 Gameweek… 2023-09-01 17:30:00 FALSE       FALSE        FALSE      FALSE      </span></span>
+<span><span class="co">#&gt;  1 Gameweek… 2023-08-11 17:30:00 TRUE        TRUE         FALSE      FALSE      </span></span>
+<span><span class="co">#&gt;  2 Gameweek… 2023-08-18 17:15:00 TRUE        TRUE         FALSE      FALSE      </span></span>
+<span><span class="co">#&gt;  3 Gameweek… 2023-08-25 17:30:00 TRUE        TRUE         FALSE      TRUE       </span></span>
+<span><span class="co">#&gt;  4 Gameweek… 2023-09-01 17:30:00 TRUE        TRUE         TRUE       FALSE      </span></span>
 <span><span class="co">#&gt;  5 Gameweek… 2023-09-16 10:00:00 FALSE       FALSE        FALSE      FALSE      </span></span>
 <span><span class="co">#&gt;  6 Gameweek… 2023-09-23 12:30:00 FALSE       FALSE        FALSE      FALSE      </span></span>
 <span><span class="co">#&gt;  7 Gameweek… 2023-09-30 10:00:00 FALSE       FALSE        FALSE      FALSE      </span></span>
@@ -243,20 +245,21 @@
 <div class="sourceCode" id="cb8"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span><span class="co"># The Dream Team for the current gameweek</span></span>
 <span><span class="fu"><a href="reference/fpl_dreamteam.html">fpl_dreamteam</a></span><span class="op">(</span><span class="op">)</span></span>
+<span><span class="co">#&gt; ℹ The dream team for Gameweek 4 is:</span></span>
 <span><span class="co">#&gt; # A tibble: 11 × 4</span></span>
-<span><span class="co">#&gt;    player    points team  position</span></span>
-<span><span class="co">#&gt;    &lt;chr&gt;      &lt;int&gt; &lt;chr&gt; &lt;chr&gt;   </span></span>
-<span><span class="co">#&gt;  1 Vicario       11 TOT   GKP     </span></span>
-<span><span class="co">#&gt;  2 Estupiñan     11 BHA   DEF     </span></span>
-<span><span class="co">#&gt;  3 Aurier        10 NFO   DEF     </span></span>
-<span><span class="co">#&gt;  4 Digne         10 AVL   DEF     </span></span>
-<span><span class="co">#&gt;  5 Mbeumo        16 BRE   MID     </span></span>
-<span><span class="co">#&gt;  6 March         15 BHA   MID     </span></span>
-<span><span class="co">#&gt;  7 Bailey        14 AVL   MID     </span></span>
-<span><span class="co">#&gt;  8 Mitoma        12 BHA   MID     </span></span>
-<span><span class="co">#&gt;  9 Diogo J.      12 LIV   MID     </span></span>
-<span><span class="co">#&gt; 10 Wissa         11 BRE   FWD     </span></span>
-<span><span class="co">#&gt; 11 Antonio        9 WHU   FWD</span></span></code></pre></div>
+<span><span class="co">#&gt;    player           points team  position</span></span>
+<span><span class="co">#&gt;    &lt;chr&gt;             &lt;int&gt; &lt;chr&gt; &lt;chr&gt;   </span></span>
+<span><span class="co">#&gt;  1 A.Becker              8 LIV   GKP     </span></span>
+<span><span class="co">#&gt;  2 Alexander-Arnold     12 LIV   DEF     </span></span>
+<span><span class="co">#&gt;  3 Zouma                11 WHU   DEF     </span></span>
+<span><span class="co">#&gt;  4 Boly                  9 NFO   DEF     </span></span>
+<span><span class="co">#&gt;  5 Son                  20 TOT   MID     </span></span>
+<span><span class="co">#&gt;  6 Gilmour              11 BHA   MID     </span></span>
+<span><span class="co">#&gt;  7 Rice                 10 ARS   MID     </span></span>
+<span><span class="co">#&gt;  8 Solomon              10 TOT   MID     </span></span>
+<span><span class="co">#&gt;  9 Haaland              20 MCI   FWD     </span></span>
+<span><span class="co">#&gt; 10 Ferguson             17 BHA   FWD     </span></span>
+<span><span class="co">#&gt; 11 J.Alvarez            14 MCI   FWD</span></span></code></pre></div>
 </div>
 </div>
 <div class="section level2">
@@ -310,10 +313,11 @@
 <div class="dev-status">
 <h2 data-toc-skip>Dev status</h2>
 <ul class="list-unstyled">
+<li><a href="https://fantasy.premierleague.com/" class="external-link"><img src="https://img.shields.io/badge/Fantasy_Premier_League-360D3A?logo=premierleague" alt="Fantasy Premier League"></a></li>
 <li><a href="https://lifecycle.r-lib.org/articles/stages.html#experimental" class="external-link"><img src="https://img.shields.io/badge/lifecycle-experimental-orange.svg" alt="Lifecycle: experimental"></a></li>
+<li><a href="https://github.com/danieloc1989/fantasypl/actions/workflows/R-CMD-check.yaml" class="external-link"><img src="https://github.com/danieloc1989/fantasypl/actions/workflows/R-CMD-check.yaml/badge.svg" alt="R-CMD-check"></a></li>
 <li><a href="https://CRAN.R-project.org/package=fantasypl" class="external-link"><img src="https://www.r-pkg.org/badges/version/fantasypl" alt="CRAN status"></a></li>
 <li><a href="https://app.codecov.io/gh/danieloc1989/fantasypl?branch=master" class="external-link"><img src="https://codecov.io/gh/danieloc1989/fantasypl/branch/master/graph/badge.svg" alt="Codecov test coverage"></a></li>
-<li><a href="https://github.com/danieloc1989/fantasypl/actions/workflows/R-CMD-check.yaml" class="external-link"><img src="https://github.com/danieloc1989/fantasypl/actions/workflows/R-CMD-check.yaml/badge.svg" alt="R-CMD-check"></a></li>
 </ul>
 </div>
 
